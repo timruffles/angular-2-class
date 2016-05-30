@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Advanced JS class</title>
+  
+  <link rel="stylesheet" href="reveal/css/reveal.min.css">
+  <link rel="stylesheet" href="reveal/lib/css/googlecode.css">
+
+  <link rel="stylesheet" href="slides-theme/style.css">
+  <link rel="stylesheet" href="slides-theme/talk-specific.css">
+
+  <!-- demos -->
+
+  <!-- for live coding -->
+  <link rel="stylesheet" href="js/little-console.css" id="theme">
+
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24335480-1']);
+  _gaq.push(['_trackPageview']);
+
+  var asyncScript = function(src) {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = src;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  };
+
+  asyncScript(('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js');
+  </script>
+
+  <script src="js/revealHooks.js"></script>
+
+</head>
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+<section  class="front"><h2 id="angular-2">Angular 2</h2>
+<p><a href="https://truffles.me.uk">@timruffles</a></p>
+</section>
+
+<section data-state='title' class=" title"><h2 id="big-takeaways">Big Takeaways</h2>
+</section>
+
+<section  class=""><h2 id="three">Three</h2>
+</section>
+
+<section  class=""><h2 id="1-components">1. Components</h2>
+</section>
+
+<section  class=""><h2 id="2-dependency-injection">2. Dependency Injection</h2>
+</section>
+
+<section  class=""><h2 id="3-data-flow">3. Data-flow</h2>
+</section>
+
+<section data-state='title' class=" title"><h2 id="typescript">TypeScript</h2>
+</section>
+
+<section  class=""><h2 id="es6-">ES6++</h2>
+<p><img src="img/typescript-es6.png" alt="typescript es6"></p>
+</section>
+
+<section  class=""><h2 id="lots-of-features">Lots of features</h2>
+</section>
+
+<section  class=""><h2 id="most-important">Most important</h2>
+<ol>
+<li>Types</li>
+<li>Modules</li>
+<li>Classes</li>
+</ol>
+</section>
+
+<section data-state='title' class=" title"><h2 id="types">Types</h2>
+</section>
+
+<section  class=""><h2 id="types">Types</h2>
+<pre><code class="lang-typescript">const person : string = &quot;hello&quot;;
+
+function greet(name: string): string {
+  return `hi ${name}`;
+}
+
+// this will compile
+console.log(greet(&quot;hi&quot;));
+
+//  Argument of type &#39;number&#39; is not assignable 
+// to parameter of type &#39;string&#39;.
+console.log(greet(1));
+</code></pre>
+</section>
+
+<section  class=""><h2 id="woah-">Woah!</h2>
+</section>
+
+<section  class=""><h2 id="bit-by-bit">Bit by bit</h2>
+</section>
+
+<section  class=""><h2 id="variables">Variables</h2>
+<pre><code class="lang-typescript">// type a var, let, const
+const person : string = &quot;hello&quot;;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="functions">Functions</h2>
+<pre><code class="lang-typescript">// type arguments, return values
+function greet(name: string): string {
+  // ...
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="compiled-code-is-nice">Compiled code is nice</h2>
+<pre><code class="lang-javascript">var person = &quot;hello&quot;;
+function greet(who) {
+    return &quot;hi &quot; + who;
+}
+// this will compile
+console.log(greet(&quot;hi&quot;));
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>EXERCISES.md - typescript-vars
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="modules">Modules</h2>
+</section>
+
+<section  class=""><h2 id="uses-es6-modules-">Uses ES6 modules!</h2>
+</section>
+
+<section  class=""><h2 id="export">Export</h2>
+<pre><code class="lang-typescript">// greetings.en.ts
+export const informal = &quot;hi&quot;;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="import">Import</h2>
+<pre><code class="lang-typescript">// run.js
+import { informal } from &quot;./greetings.en&quot;;
+
+console.log(informal + &quot; amy&quot;) // hi amy
+</code></pre>
+</section>
+
+<section  class=""><h2 id="together">Together</h2>
+<pre><code class="lang-typescript">// greetings.en.ts
+export const informal = &quot;hi&quot;;
+export function useful() {}
+</code></pre>
+<pre><code class="lang-typescript">// run.js
+import { informal, useful } from &quot;./greetings.en&quot;;
+
+console.log(informal + &quot; amy&quot;) // hi amy
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>EXERCISES.md - import-export
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="classes">Classes</h2>
+</section>
+
+<section  class=""><h2 id="es6-">ES6++</h2>
+</section>
+
+<section  class=""><h2 id="properties">Properties</h2>
+<pre><code class="lang-typescript">export class Heading {
+  level: number;
+  text: string = &quot;default&quot;;
+}
+
+const header = new Heading();
+header.text // &quot;default&quot;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="properties-in-constructor">Properties in constructor</h2>
+<pre><code class="lang-typescript">export class Heading {
+  constructor(public level: number, 
+    public text: string) {
+  }
+}
+
+const header = new Heading(2, &quot;hello&quot;);
+header.level // 2
+header.text // &quot;hello&quot;;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="methods">Methods</h2>
+<pre><code class="lang-typescript">export class MarkdownHeading {
+  //...
+
+  render() {
+    return `&lt;h${this.level}&gt;
+      this.text
+    &lt;/h${this.level}&gt;`;
+  }
+}
+
+const header = new Heading(2, &quot;hello&quot;);
+console.log(header.render()) // &quot;&lt;h2&gt;hello&lt;/h2&gt;&quot;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>EXERCISES.md - classes
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="loading-typescript">Loading TypeScript</h2>
+</section>
+
+<section  class=""><h2 id="not-native">Not native</h2>
+</section>
+
+<section  class=""><h2 id="modules-not-native">Modules not native</h2>
+<ul>
+<li>stuck in browser vendor disputes</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="polyfill-to-the-rescue-">Polyfill to the rescue!</h2>
+<pre><code class="lang-javascript">System.import(&#39;app/main&#39;)
+.catch((e) =&gt; console.error(e.stack))
+</code></pre>
+</section>
+
+<section  class=""><h2 id="config">Config</h2>
+</section>
+
+<section  class=""><h2 id="your-code">Your code</h2>
+<pre><code class="lang-javascript">System.config({
+  packages: {
+    app: {
+      format: &#39;register&#39;,
+      defaultExtension: &#39;js&#39;
+    },
+  },
+});
+</code></pre>
+</section>
+
+<section  class=""><h2 id="external-modules">External modules</h2>
+<pre><code class="lang-typescript">// importing from node_modules
+import d3 from &quot;d3&quot;:
+
+// powered by...
+</code></pre>
+<pre><code class="lang-javascript">// this config
+System.config({
+  map: {
+    d3: &quot;node_modules/d3/d3.js&quot;,
+  },
+  meta: {
+    &quot;node_modules/*&quot;: {
+      defaultExtension: &#39;js&#39;,
+      format: &quot;cjs&quot;
+    }
+  },
+});
+</code></pre>
+</section>
+
+<section data-state='title' class=""><h2 id="components">Components</h2>
+</section>
+
+<section  class=""><h2 id="our-first-component">Our first component</h2>
+</section>
+
+<section  class=""><h2 id="goal">Goal</h2>
+<pre><code class="lang-html">&lt;hello-angular&gt;
+  &lt;h1&gt;Hi there&lt;/h1&gt;
+&lt;/hello-angular&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="bit-by-bit">Bit by bit</h2>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">import { Component } from &#39;angular2/core&#39;;
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">@Component({
+  // any CSS selector
+  selector: &#39;hello-angular&#39;,
+  // ...
+})
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">@Component({
+  // ...
+  template: &#39;&lt;h1&gt;{{ message }}&lt;/h1&gt;&#39;,
+})
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">class HelloComponent {
+  constructor() { 
+    this.message = &quot;Hi there&quot;;
+  }
+}
+</code></pre>
+</section>
+
+<section data-state='notitle' class=""><h2 id="-"> </h2>
+<pre><code class="lang-javascript">export { HelloComponent };
+</code></pre>
+</section>
+
+<section  class=""><h2 id="all-together">All together</h2>
+<pre><code class="lang-javascript">import { Component } from &#39;angular2/core&#39;;
+
+export { HelloComponent };
+
+@Component({
+  selector: &#39;hello-angular&#39;,
+  template: &#39;&lt;h1&gt;{{ message }}&lt;/h1&gt;&#39;,
+})
+class HelloComponent {
+  constructor() { 
+    this.message = &quot;Hi there&quot;;
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="complete-app-">Complete app!</h2>
+<pre><code class="lang-javascript">import { HelloComponent } from &quot;./HelloComponent&quot;;
+import { bootstrap } from &quot;angular2/platform/browser&quot;;
+
+bootstrap(HelloComponent);
+</code></pre>
+<pre><code class="lang-javascript">&lt;!DOCTYPE html&gt;
+
+&lt;hello-angular&gt;&lt;/hello-angular&gt;
+
+&lt;!-- bundled up: app + dependencies --&gt;
+&lt;script src=&quot;dist/app.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="let-s-have-a-go">Let&#39;s have a go</h2>
+<pre><code>hello-angular
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="template-superpowers">Template superpowers</h2>
+</section>
+
+<section  class=""><h2 id="data-binding">Data-binding</h2>
+<pre><code class="lang-html">&lt;!-- interpolated - live --&gt;
+&lt;div title=&quot;Hello {{ person }}&quot;&gt;
+
+&lt;!-- [] = attribute replaced by expression --&gt;
+&lt;div [title]=&quot;getMessage()&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="event-handling">Event-handling</h2>
+<pre><code class="lang-html">&lt;!-- DOM events --&gt;
+&lt;form (submit)=&quot;create($event)&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="two-way-data-binding">Two-way data-binding</h2>
+<pre><code class="lang-html">&lt;!-- the local ourName property will be 
+     bound to <code>.name</code> of our some-editor 
+     component --&gt;
+&lt;some-editor ([name])=&quot;ourName&quot;&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="local-variables">Local variables</h2>
+<ul>
+<li>access nodes in template</li>
+</ul>
+<pre><code class="lang-html">&lt;video #movieplayer &gt;
+  &lt;button (click)=&quot;movieplayer.play()&quot;&gt;
+&lt;/video&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="let-s-have-a-go">Let&#39;s have a go</h2>
+<pre><code>template-powers
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="component-tree">Component Tree</h2>
+</section>
+
+<section  class=""><h2 id="child-components">Child components</h2>
+<pre><code class="lang-typescript">import { Component } from &#39;angular2/core&#39;;
+import { HelloComponent } from &#39;./HelloComponent&#39;;
+
+export { FrontPage };
+
+@Component({
+  // this is where we list additional directives
+  directives: [HelloComponent],
+  template: &#39;&lt;hello-angular&gt;&lt;/hello-angular&gt;&#39;,
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="inherited">Inherited</h2>
+<pre><code class="lang-typescript">// App.ts
+import { Component, FORM_DIRECTIVES, CORE_DIRECTIVES }
+ from &#39;angular2/core&#39;;
+
+@Component({
+  directives: [FORM_DIRECTIVES, CORE_DIRECTIVES],
+  // ...
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>component-tree
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="building-controls">Building Controls</h2>
+</section>
+
+<section  class=""><h2 id="goal">Goal</h2>
+<ul>
+<li>pass data into controls</li>
+<li>get notified when user changes</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="data-in">Data in</h2>
+<pre><code class="lang-html">&lt;dataset-filter
+  [data]=&quot;ourData&quot;
+  ...
+  &gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="data-out">Data out</h2>
+<ul>
+<li>via events</li>
+</ul>
+<pre><code class="lang-html">&lt;dataset-filter
+  (filtered)=&quot;setFilter($event)&quot;
+  ...
+  &gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="data-in">Data in</h2>
+<pre><code class="lang-typescript">import { Input } from &quot;angular2/core&quot;;
+
+@Component({ /<em> ... </em>/ })
+class DataControl {
+  @Input() public categories: string[];
+
+  ngOnChanges(changes) {
+    // fired when input changes
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="data-out">Data out</h2>
+<pre><code class="lang-typescript">import { EventEmitter, Output } from &quot;angular2/core&quot;;
+
+@Component({ /<em> ... </em>/ })
+class DataControl {
+  @Output() public filtered = new EventEmitter;
+
+  filterChange() {
+    // fires (filtered)=... expression
+    this.filtered.emit(this.createFilterObject());
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>input-output
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="loading-data">Loading data</h2>
+</section>
+
+<section  class=""><h2 id="goal">Goal</h2>
+<ul>
+<li>load in Reddit frontpage data</li>
+<li>prepare</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="define">Define</h2>
+<pre><code class="lang-typescript">import { Http } from &#39;angular2/http&#39;;
+
+export class Reddit {
+    frontpage() {
+       return this.http.get(
+         `https://www.reddit.com/.json`)
+    }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="but-">But...</h2>
+</section>
+
+<section  class=""><h2 id="how-do-we-get-an-instance-">How do we get an instance?</h2>
+<pre><code class="lang-typescript">   return this.http.get(`https://www.reddit.com/.json`)
+</code></pre>
+</section>
+
+<section  class=""><h2 id="ask-for-it-">Ask for it!</h2>
+<pre><code class="lang-typescript">import { Injectable } from &quot;angular2/core&quot;;
+import { Http } from &quot;angular2/http&quot;;
+
+@Injectable();
+export class Reddit {
+  // this items deps will be looked up when
+  // it&#39;s required
+  constructor(private http: Http) {}
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="dependency-injection">Dependency Injection</h2>
+</section>
+
+<section  class=""><h2 id="provide-http-to-app">Provide HTTP to app</h2>
+<pre><code class="lang-typescript">// App.component.ts
+import { HTTP_PROVIDERS } from &quot;angular2/http&quot;;
+
+@Component({
+  // ...
+  providers: [HTTP_PROVIDERS /* ... */],
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="using">Using</h2>
+<pre><code class="lang-typescript">import { Reddit } from &quot;./Reddit.service&quot;;
+
+@Component(/* ... */)
+export class Chart {
+  // we&#39;ll get an instance
+  constructor(reddit: Reddit) {
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="why-di-">Why DI?</h2>
+</section>
+
+<section  class=""><h2 id="two-benefits">Two benefits</h2>
+</section>
+
+<section  class=""><h2 id="one-testing">One: testing</h2>
+<ul>
+<li>not today</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="two-pluggable-implementations">Two: pluggable implementations</h2>
+</section>
+
+<section  class=""><h2 id="hierarchical">Hierarchical</h2>
+</section>
+
+<section  class=""><h2 id="tree">Tree</h2>
+<p><img src="img/injector-tree.png" alt="injector tree"></p>
+</section>
+
+<section data-state='notitle' class=" notitle"><h2 id="e-g">e.g</h2>
+<pre><code class="lang-typescript">import { provide } from &#39;angular2/core&#39;;
+import { Reddit, AlternativeReddit } from 
+  &#39;./Reddit.service&#39;;
+
+// provide a valid alternative implementation
+// of Reddit (server-side, stubbed, web-sockets...)
+bootstrap(FrontPage, [
+  provide(Reddit, { 
+    useClass: AlternativeReddit,
+  },
+])
+</code></pre>
+<pre><code class="lang-typescript">import { Reddit } from &#39;./Reddit.service&#39;;
+
+class HelloComponent {
+  // ...and components down the tree 
+  // get them!
+  constructor(greeter: Reddit) { 
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="back-to-reddit-http">Back to Reddit &amp; HTTP</h2>
+</section>
+
+<section  class=""><h2 id="transform">Transform</h2>
+<pre><code class="lang-typescript">import { Http } from &#39;angular2/http&#39;;
+
+@Injectable()
+export class Reddit {
+    frontPage = `//www.reddit.com/.json`;
+
+    constructor(private http: Http) {}
+
+    frontpage() {
+       return this.http.get(this.frontPage)
+         .toPromise()
+         .then((resp) =&gt; {
+            return resp.json()
+              .data.children.map(child =&gt; child.data)
+         })
+    }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>http
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="routing">Routing</h2>
+</section>
+
+<section  class=""><h2 id="component-router">Component Router</h2>
+<ul>
+<li>1.x and 2.x</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="structured">Structured</h2>
+<p><img src="img/component-router.png" alt="component router"></p>
+</section>
+
+<section  class=""><h2 id="for-today-kiss">For today: KISS</h2>
+</section>
+
+<section  class=""><h2 id="define-routes">Define routes</h2>
+<pre><code class="lang-typescript">import {RouteConfig, RouterOutlet} 
+  from &#39;angular2/router&#39;;
+
+@RouteConfig([
+  {
+    path:&#39;/chart/:facet&#39;,
+    name: &#39;ChartWithFacet&#39;,
+    component: ChartDisplay 
+  },
+  // ... more
+])
+@Component({
+  // here&#39;s where our routed component attaches
+  directives: [RouterOutlet],
+  template: &#39;&lt;router-outlet&gt;&lt;/router-outlet&gt;&#39;,
+</code></pre>
+</section>
+
+<section  class=""><h2 id="configure">Configure</h2>
+<pre><code class="lang-typescript">import { ROUTER_PROVIDERS, LocationStrategy, 
+  PathLocationStrategy, APP_BASE_HREF } 
+  from &quot;angular2/router&quot;;
+
+bootstrap(App, [
+  ROUTER_PROVIDERS
+  , provide(LocationStrategy, 
+    { useClass: PathLocationStrategy })
+  , provide(APP_BASE_HREF, { useValue: &quot;/src&quot; })
+]);
+</code></pre>
+</section>
+
+<section  class=""><h2 id="links">Links</h2>
+<pre><code class="lang-typescript">import { ROUTER_DIRECTIVES, RouteConfig }
+   from &quot;angular2/router&quot;;
+
+@Component({
+  selector: &quot;datasets&quot;,
+  directives: [ROUTER_DIRECTIVES],
+  template: `
+    &lt;h1&gt;hello from home page&lt;/h1&gt;
+    &lt;a [routerLink]=
+      &quot;[&#39;/ChartWithFacet&#39;, { id: &#39;Router&#39; }]&quot;&gt;
+      Router
+    &lt;/a&gt;
+  `
+})
+</code></pre>
+</section>
+
+<section data-state='title' class=" title"><h2 id="exercise">Exercise</h2>
+<pre><code>routing
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="using-with-d3">Using with D3</h2>
+</section>
+
+<section  class=""><h2 id="goal">Goal</h2>
+<ul>
+<li>write D3 again!</li>
+<li>get data from NG to d3</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="write-a-graph">Write a graph</h2>
+<ul>
+<li>this bit: identical</li>
+</ul>
+<pre><code class="lang-typescript">import { Injectable } from &quot;angular2/core&quot;;
+import d3 from &quot;d3&quot;;
+
+@Injectable()
+class Graph {
+  render({ el: SVGElement, data: any[] }) {
+    d3.select(el)
+      // ...
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="angular-hides-the-dom">Angular hides the DOM</h2>
+</section>
+
+<section  class=""><h2 id="d3-needs-the-dom">D3 needs the DOM</h2>
+<pre><code class="lang-typescript">render({ el: SVGElement, data: any[] }) {
+</code></pre>
+</section>
+
+<section  class=""><h2 id="how-">How?</h2>
+</section>
+
+<section  class=""><h2 id="-elementref-"><code>ElementRef</code></h2>
+<pre><code class="lang-typescript">import {ElementRef, Component} from &#39;angular2/core&#39;;
+import { Graph } from &quot;./Graph.service&quot;;
+
+@Component({
+  // ...
+})
+export class Chart {
+  constructor(private el: ElementRef, 
+    private graph: Graph) {
+  }
+  ngOnChanges() {
+    this.graph.render({
+      // aha! the DOM returns...
+      el: this.el &amp;&amp; this.el.nativeElement,
+      data: /// ...
+    })
+  }
+}
+</code></pre>
+<!-- TODO write a demo with ElementRef -->
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>d3
+</code></pre></section>
+
+<section  class=""><h2 id="thanks-">Thanks!</h2>
+<p><a href="https://twitter.com/timruffles">@timruffles</a></p>
+</section>
+
+</div>
+</div>
+
+<!-- demo code -->
+<script src="js/jquery.js"></script>
+<script src="js/lodash.js"></script>
+<script src="js/angular.js"></script>
+
+<!-- live coding -->
+<script src=js/little-console.js></script>
+<script src=js/showConsoles.js></script>
+
+<!-- reveal -->
+<script src="reveal/lib/js/head.min.js"></script>
+<script src="reveal/plugin/highlight/highlight.js"></script>
+<script src="reveal/js/reveal.js"></script>
+<script src="js/revealConfig.js"></script>
+
+</body>

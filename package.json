@@ -1,0 +1,11 @@
+{
+  "name": "angular-2-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd exercises; npm install"
+  },
+  "author": "Tim Ruffles <timruffles@gmail.com> https://truffles.me.uk",
+  "license": "AGPL-3.0"
+}
