@@ -1,0 +1,95 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="routing">Routing</h1>
+<p>We&#39;re going to add routing to our shop, so users can go directly
+to a product via a link.</p>
+<h2 id="steps">Steps</h2>
+<ul>
+<li>First we&#39;ll load our current home page via a route<ul>
+<li>We want to create a route that matches the home page, and displays our product list<ul>
+<li>Fist, we need somewhere for our route to display!<ul>
+<li>Our <code>product-list</code> is now going to be access via a route, so remove it from the template</li>
+<li>Replace it with <code>&lt;router-outlet&gt;</code></li>
+<li>Nothing happens, why?</li>
+<li>Because we haven&#39;t imported the routing system!</li>
+</ul>
+</li>
+<li>We&#39;ll need to import the routing directives and providers, and ensure they&#39;re available throughout our app<ul>
+<li>Import <code>{ ROUTER_PROVIDERS, ROUTER_DIRECTIVES }</code> from <code>@angular/router</code></li>
+<li>These are the providers (services) and directives (components and directives) for routing</li>
+<li>We need to place these in the <code>providers:</code> and <code>directives:</code> keys of our <code>App</code> component</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Now we&#39;ve got the providers and directives, let&#39;s define a route<ul>
+<li><code>@Routes()</code> is a decorator just like <code>@Component()</code></li>
+<li>Let&#39;s use <code>@Routes()</code> to define our first route - &quot;/&quot; will route to <code>ProductList</code><ul>
+<li>add <code>path: &quot;/&quot;</code> and <code>component: ProductList</code></li>
+</ul>
+</li>
+<li>Nothing happens yet - why? Ah - we need a route</li>
+</ul>
+</li>
+<li>Though we define a route, nothing is happening! We need to ensure an instance of <code>Router</code> is created<ul>
+<li>inject <code>Router</code> into our <code>App</code> constructor</li>
+<li>We should now boot up and be displaying the product list!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Now we want to link to individual product pages<ul>
+<li>Let&#39;s create a route for a single product<ul>
+<li>Let&#39;s define a route that matches a product with an <code>id</code><ul>
+<li><code>{path: &#39;/products/:id&#39;,</code> is good, it&#39;ll match <code>/products/123</code> or <code>/products/some-product</code>.</li>
+<li>ensure it routes to our <code>ProductPage</code> component<ul>
+<li><code>{ path: ..., component: ProductPage }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>We&#39;re going to switch our listing over from rendering a product to rendering a simple link <ul>
+<li>in <code>ProductList</code>, remove the <code>&lt;product&gt;</code> component</li>
+<li>replace it with a normal HTML link, with the text being the product&#39;s name</li>
+<li>use the <code>[routerLink]=</code> directive to create a link<ul>
+<li>router link accepts an array of route pieces</li>
+<li>it&#39;ll need to match the route you create</li>
+<li><code>[routerLink]=[&#39;/products&#39;, product.id]</code> will match the route I defined above</li>
+<li>this will crash - what&#39;s missing?<ul>
+<li>oh yes - we need <code>ROUTER_DIRECTIVES</code> again for our <code>ProductList</code>. Import it and place it in <code>@Component()</code> under <code>directives:</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Now we should be able to navigate to a product page, but no product data appears!<ul>
+<li>That&#39;s because we are now specifying the id via our route<ul>
+<li>remove out <code>@Input()</code> as it&#39;s no longer needed</li>
+</ul>
+</li>
+<li>We need to get the route data into the component</li>
+<li>For that, we need the <code>RouteSegment</code> service<ul>
+<li>Import it into <code>ProductPage</code>, and inject it into the <code>ProductPage</code></li>
+<li>Update <code>ngOnInit()</code> to use the RouteSegment&#39;s <code>getParam(&#39;id&#39;)</code> method, rather than our input</li>
+</ul>
+</li>
+<li>Try out the links! You should be able to navigate to different product pages</li>
+</ul>
+</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<h2 id="goal">Goal</h2>
+<p><img src="routing.png" alt="Routing"></p>
+
+    </body>
+  

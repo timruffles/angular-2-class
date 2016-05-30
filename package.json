@@ -1,0 +1,15 @@
+{
+  "name": "angular-2-class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:exercises": "node './.build-exercises.js' exercises/*.md",
+    "postinstall": "cd app && npm install && cd ../ && cd slides && npm install"
+  },
+  "devDependencies": {
+    "marked": "^0.3.5"
+  },
+  "author": "Tim Ruffles <timruffles@gmail.com> https://truffles.me.uk",
+  "license": "©"
+}

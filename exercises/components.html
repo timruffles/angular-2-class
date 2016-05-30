@@ -1,0 +1,34 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="components">Components</h1>
+<p>Write code in angular-2-exercise/app.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</li>
+</ol>
+<p>The below is intended to be a chance to use what you&#39;ve learned, not a puzzle. If it&#39;s not clear what to do, ask me!</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>we want to make a component that&#39;ll list our products</li>
+<li>define a new component called <code>Product</code> (work out the filename we should use from our <code>App</code> component), which binds to <code>&lt;product&gt;</code> elements</li>
+<li>add in an <code>&lt;h2&gt;</code> in its template, and think of a product a super hero would need</li>
+<li>add a <code>&lt;product&gt;</code> tag into the template of <code>App</code></li>
+<li>what happens? Think about why</li>
+<li>we need to inform Angular we&#39;re using a custom component.</li>
+<li>import <code>Product</code> into <code>App</code></li>
+<li>will the component know about Product yet?</li>
+<li>it won&#39;t - we need to explicitly tell it about our component. In the @Component decorator, add a <code>directives:</code> property and set its value to an array containing <code>Product</code> </li>
+<li>you should now see your <code>Product</code> component</li>
+</ol>
+<h2 id="goal">Goal</h2>
+<p><img src="components.png" alt="goal"></p>
+
+    </body>
+  

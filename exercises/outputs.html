@@ -1,0 +1,51 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="outputs">Outputs</h1>
+<p>Outputs all us to emit events from our components. The big idea of Angular 2 data-flow is data-down, events up. Outputs are where events come from.</p>
+<h2 id="steps">Steps</h2>
+<ul>
+<li>Our add to cart button isn&#39;t doing much. Let&#39;s fix that!</li>
+<li>We want to use a <code>Cart</code> component that holds the products we&#39;ve bought<ul>
+<li>it&#39;s in <code>app/pre-built</code> - copy it to <code>app/app/Cart</code></li>
+</ul>
+</li>
+<li>Our <code>Product</code> component needs to react to people clicking on <code>Add to cart</code><ul>
+<li>This is our first <code>Output</code>. We want to emit a high-level event each time someone clicks - in other words turning a <code>DOM</code> event into a business event<ul>
+<li>First off, import <code>Output</code> - this is the <code>@Output()</code> decorator - and <code>EventListener</code>  from <code>@angular/core</code></li>
+<li>next remove all the business logic from our component</li>
+<li>replace it with emitting an event<ul>
+<li>`this.added.emit({ product: this.product });</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Also - the entries are asynchronous. Update the template to display a loading message while a cart entry is being updated</li>
+</ul>
+</li>
+<li>In our <code>ProductPage</code>, we want to react to items being added to the cart<ul>
+<li>Why not in the <code>Product</code>?<ul>
+<li>As it&#39;s not a smart component, it shouldn&#39;t know about stores</li>
+</ul>
+</li>
+<li>We emitted from an emitter called &#39;added&#39;, which means the event will also be called emitted</li>
+<li>Use the angular template syntax to listen for the <code>added</code> event. Make sure to pass the event along<ul>
+<li><code>(added)=added($event)</code></li>
+</ul>
+</li>
+<li>In the handler, call the appropriate method on <code>Cart</code>
+<code>this.cart.add(event.product.id)</code></li>
+</ul>
+</li>
+<li>Add some items to the cart. We should see the number of items in the cart increase, and persist across page loads! </li>
+</ul>
+<h2 id="goal">Goal</h2>
+<p>We&#39;ll be able to click to add items to cart. This will persist across page refreshes. We&#39;ll also make sure to add some feedback when the cart entry is loading.</p>
+<p><img src="outputs.png" alt="goal"></p>
+
+    </body>
+  

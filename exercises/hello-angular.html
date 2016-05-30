@@ -1,0 +1,47 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="hello-angular">Hello Angular</h1>
+<p>Write code in <code>./app</code>.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</li>
+</ol>
+<p>The below is intended to be a chance to use what you&#39;ve learned, not a puzzle. If it&#39;s not clear what to do, ask me!</p>
+<ol>
+<li>creating our first component<ol>
+<li>define our first component - <code>App</code> class in <code>app/App.component.ts</code></li>
+<li>telling Angular about our component<ol>
+<li>use the <code>@Component</code> decorator to ensure Angular knows it&#39;s a component</li>
+<li>use &#39;selector:&#39; to select <code>&lt;app&gt;&lt;/app&gt;</code> tags</li>
+<li>give it a simple <code>template:</code> which displays <code>&lt;h1&gt;Superhero shop&lt;/h1&gt;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>booting the application with our component<ol>
+<li>our component will be the root of the application&#39;s component tree</li>
+<li>create <code>app/main.ts</code> - this will be responsible for starting the app</li>
+<li>import the <code>bootstrap</code> method - it&#39;s in <code>angular2/platform-browser-dynamic</code></li>
+<li>import our <code>App</code> component</li>
+<li>call <code>bootstrap</code> with <code>App</code> to boot up the application</li>
+<li>You should see the HTML from your template</li>
+<li>Inspect the page - look for the <code>&lt;app&gt;</code> tag, it should have your HTML</li>
+</ol>
+</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://angular.io/docs/ts/latest/guide/cheatsheet.html">Cheatsheet</a></li>
+</ul>
+<h2 id="goal">Goal</h2>
+<p><img src="hello-angular.png" alt="goal"></p>
+
+    </body>
+  

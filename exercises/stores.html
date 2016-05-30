@@ -1,0 +1,68 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="stores">Stores</h1>
+<p>Stores manage our access to the data-layer. We&#39;re going to move from hard-coded data to write and use a mocked-up store to load our data.</p>
+<h2 id="steps">Steps</h2>
+<ul>
+<li>We want to build a store to hold our products<ul>
+<li>This is written for you - copy over <code>app/pre-written/ProductStore.ts</code> to <code>app/ProductStore.ts</code></li>
+<li>Read through the source code. We&#39;re using a <code>Map</code> as an in-memory store layer for our products</li>
+</ul>
+</li>
+<li>We&#39;d like to replace the hard-coded access to products in <code>ProductList</code> with our store<ul>
+<li>Let&#39;s load in the products<ul>
+<li>Import the store into our <code>ProductList</code></li>
+<li>Use <code>ProductStore</code> in our <code>ProductList</code> to retrieve the list of all products via the <code>all()</code> method</li>
+<li>when the promise resolves (<code>.then(resolver)</code>) assign it to the products property</li>
+</ul>
+</li>
+<li>We should see a list of products!</li>
+</ul>
+</li>
+<li>Now we want to load each product from the store. <ul>
+<li>For now we could pass in the product directly, but we can remove the restriction for the product to be available in memory</li>
+<li>Later this will allow us to route straight to a product page</li>
+</ul>
+</li>
+<li>We&#39;re going to define a &#39;smart component&#39; that is responsible for loading a product<ul>
+<li>Why? This stops us from mixing up how we render a product with how it&#39;s found.</li>
+<li>Define a <code>ProductPage</code> component</li>
+<li>we need to load in a product by id<ul>
+<li>first we need to get the id<ul>
+<li>define a <code>productId</code> input</li>
+</ul>
+</li>
+<li>now we&#39;ll load in the product<ul>
+<li>define somewhere to store the product once it arrives<ul>
+<li><code>product: product;</code> property</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>get an instance of our store<ul>
+<li>import &amp; inject the <code>ProductStore</code></li>
+</ul>
+</li>
+<li>use the id and store to load the product on component startup<ul>
+<li>when the component boots up, use the <code>productId</code> to <code>.get()</code> the product</li>
+<li>when the product resolves (<code>.then(resolver)</code>) assign it to the product property</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Use our smart component within the <code>ProductList</code> component, passing in the id rather than the product</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<h2 id="goal">Goal</h2>
+<p>This exercise doesn&#39;t change the app visually from last time. It should still work though! :)</p>
+<p><img src="built-in-directives.png" alt="goal"></p>
+
+    </body>
+  

@@ -1,0 +1,4 @@
+exercises/app/*.js
+exercises/app/*.map
+exercises/typescript-exercises/*.js
+exercises/typescript-exercises/*.map

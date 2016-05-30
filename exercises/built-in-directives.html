@@ -1,0 +1,39 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="built-in-directives">Built-in directives</h1>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>we want to show an unknown number of products<ol>
+<li>we&#39;re going to define a component to display a list of products<ol>
+<li>define a component - you can choose the name</li>
+<li>this should accept a list of products - define an <code>@Input</code> to accept them</li>
+<li>use a built-in directive to create a <code>&lt;product&gt;</code> tag per item in the product list</li>
+<li>look up a loop-y directive in the cheatsheet</li>
+<li>inside the tempate use <code>*ngFor</code> to repeat our <code>product</code> component</li>
+<li>pass the product to the <code>&lt;product&gt;</code> component via its input</li>
+</ol>
+</li>
+<li>use our product list to display a list of products<ol>
+<li>in App, import a longer list products - it&#39;s <code>longerStaticProductList</code> from <code>app/productList.fixture</code>. </li>
+<li>replace our repeated <code>&lt;product&gt;</code> with the <code>&lt;product-list&gt;</code></li>
+<li>pass in the products to our list component</li>
+</ol>
+</li>
+<li>wohoo, more products with less typing!</li>
+</ol>
+</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://angular.io/docs/ts/latest/guide/cheatsheet.html">Cheatsheet</a></li>
+</ul>
+<h2 id="goal">Goal</h2>
+<p><img src="built-in-directives.png" alt="goal"></p>
+
+    </body>
+  

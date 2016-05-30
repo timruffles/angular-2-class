@@ -1,0 +1,48 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="forms">Forms</h1>
+<p>We want to accept payment using Angular&#39;s form system.</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>We want to create a <code>Checkout</code> component<ol>
+<li>Copy across the <code>pre-written/Checkout.component.html</code> to the app folder</li>
+</ol>
+</li>
+<li>First let&#39;s create a route for our Checkout<ol>
+<li>You know how to do this :)</li>
+</ol>
+</li>
+<li>In the <code>Checkout</code> component, we want to create our form<ol>
+<li>I&#39;ve written the HTML for you as HTML is not what we&#39;re here to learn</li>
+<li>It&#39;s your job to wire it up with Angular</li>
+</ol>
+</li>
+<li>We want to ensure the data we create is valid<ol>
+<li>Ensure all the fields are required</li>
+<li>Disable the checkout button until the form is valid</li>
+</ol>
+</li>
+<li>We also need to show our users what went wrong<ol>
+<li>The card-number input has a HTML 5 pattern attribute</li>
+<li>Angular will use this to make the number control invalid</li>
+<li>We need to get a reference to the control for the card-number and reveal the error message only when it&#39;s invalid</li>
+<li>Use this to toggle the <code>error</code> class on the <code>&lt;div&gt;</code> surrounding the card-number input</li>
+</ol>
+</li>
+<li>Let&#39;s handle the submission of the form</li>
+<li>Woohoo! We built a credit-card form that isn&#39;t terrible</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://angular.io/docs/ts/latest/cheatsheet.html">Cheatsheet</a></li>
+</ul>
+<h2 id="goal">Goal</h2>
+<p><img src="forms.png" alt="Forms"></p>
+
+    </body>
+  

@@ -1,0 +1,63 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="inputs">Inputs</h1>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>use this (<a href="https://angular.io/docs/ts/latest/cheatsheet.html">cheatsheet</a>) for reference - there&#39;s lots of syntax!</li>
+<li>let&#39;s use our updated product with an example product structure<ol>
+<li>we need to get a product to pass to our component<ol>
+<li>in <code>App</code>, import <code>staticProductList</code> from <code>./fixtures</code></li>
+<li>assign it a property of app</li>
+</ol>
+</li>
+<li>we want to pass a product to our <code>Product</code> component<ol>
+<li>pass in <code>products[0]</code> to the our <code>&lt;product&gt;</code></li>
+<li>check the cheatsheet to see how we do that!</li>
+</ol>
+</li>
+<li>oh no! something is wrong in the console<ol>
+<li>you should see Angular complain that <code>product</code> is not a &quot;known native property&quot;</li>
+<li>why? we&#39;ll fix this in the next step</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>we need to tell Angular our <code>Product</code> component accepts a product input<ol>
+<li>we need to tell the component it accepts a product via it&#39;s <code>product=</code> attribute<ol>
+<li>import the <code>@Input()</code> decorator</li>
+<li>use the <code>@Input()</code> annotation to accept a single <code>product</code> as an attribute</li>
+</ol>
+</li>
+<li>we also need to handle the product not being there, we will see errors otherwise<ol>
+<li>is there a template feature we can use?</li>
+<li>yes! the &#39;safe navigation operator&#39; (quiff): <code>product?.title</code></li>
+</ol>
+</li>
+<li>let&#39;s use the product to stop hard-coding the product<ol>
+<li>update the template to take in description and title from the <code>product</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>let&#39;s use our new data-driven component to stamp 3 products!<ol>
+<li>import the product array from <code>./fixtures</code></li>
+<li>create 3 <code>&lt;product&gt;</code> components, and pass one product to each</li>
+</ol>
+</li>
+<li>[EXTRA CREDIT] define a <code>ngOnChanges(ch) { console.log(ch) }</code> method in <code>Product</code><ol>
+<li>what is logged?</li>
+<li>how could this be useful?</li>
+<li>research <code>ngOnChanges</code> - what does it do?</li>
+</ol>
+</li>
+</ol>
+<h2 id="goal">Goal</h2>
+<p><img src="inputs.png" alt="goal"></p>
+
+    </body>
+  
