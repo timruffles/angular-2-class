@@ -1,0 +1,51 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="http">HTTP</h1>
+<p>Write code in <code>./exercises/app</code>.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li><p>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</p>
+</li>
+<li><p>creating a service to load reddit data</p>
+<ol>
+<li>define a <code>Reddit.service</code> class, with a <code>frontpage</code> method</li>
+<li>import and ask for <code>Http</code> in the constructor and define it as a property</li>
+<li>import your new service into App, and ask for an instance of it in the constructor</li>
+<li>you should get an error - Angular doesn&#39;t know how to inject <code>Reddit</code> yet!</li>
+<li>to do this we need to do 2 things<ol>
+<li>tell Angular how to inject Reddit - import and use <code>@Injectable()</code> on <code>Reddit</code></li>
+<li>give Angular a provider for Reddit. In <code>App</code> define a <code>providers:</code> array on the <code>@Component</code>, and import and pass in <code>Reddit</code></li>
+</ol>
+</li>
+<li>you should now have a <code>reddit</code> property in <code>App</code></li>
+</ol>
+</li>
+<li>loading data<ol>
+<li>we want to implement <code>frontpage</code> in <code>Reddit</code></li>
+<li>make a get request to <code>https://www.reddit.com/.json</code> (yes the suffix looks weird - try it out in the browser)</li>
+<li>use <code>toPromise()</code> on the result</li>
+<li>log out the response via <code>.then((resp) =&gt; console.log(resp.json()))</code></li>
+<li>we need to return a transformed version of the response, with just the interesting data</li>
+<li>in the <code>.then()</code> handler, use <code>.map</code> to get just the <code>.data</code> properties of the story data, and return it from <code>.then</code></li>
+</ol>
+</li>
+<li><p>triggering our load</p>
+<ol>
+<li>in <code>App</code>, assign <code>this.stories</code> to the result of calling <code>reddit.frontpage</code></li>
+</ol>
+</li>
+<li><p>using <code>*ngFor</code></p>
+<ol>
+<li>I will take you through this step </li>
+</ol>
+</li>
+</ol>
+
+    </body>
+  

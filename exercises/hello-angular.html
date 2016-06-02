@@ -1,0 +1,39 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="hello-angular">Hello Angular</h1>
+<p>Write code in <code>./exercises/app</code>.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li><p>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</p>
+</li>
+<li><p>creating our first component</p>
+<ol>
+<li>define our first component - <code>App</code> in <code>app/App.component.ts</code></li>
+<li>telling Angular it&#39;s a component<ol>
+<li>use the <code>@Component</code> decorator to make it select <code>&lt;app&gt;&lt;/app&gt;</code> tags</li>
+<li>give it a simple <code>template</code> so you can see it has worked</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>booting the application with our component<ol>
+<li>our component will be the root of the application&#39;s component tree</li>
+<li>our <code>main.ts</code> - this will be responsible for starting the app</li>
+<li>import the <code>bootstrap</code> method - it&#39;s in <code>angular2/platform/browser</code></li>
+<li>import our <code>App</code> component</li>
+<li>call <code>bootstrap</code> with <code>App</code> to boot up the application</li>
+<li>You should see the HTML from your template</li>
+<li>Inspect the page - look for the <code>&lt;app&gt;</code> tag, it should have your HTML</li>
+</ol>
+</li>
+</ol>
+<p>The above is intended to be chances to use what you&#39;ve learned, not puzzles. If it&#39;s not clear what to do, ask me!</p>
+
+    </body>
+  

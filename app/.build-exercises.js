@@ -15,6 +15,16 @@ marked.setOptions({
 const encoding = { encoding: "utf8" };
 
 for(const file of process.argv.slice(2)) {
+  const html = marked(fs.readFileSync(file, encoding));
+  const wrapped = `
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      ${html}
+    </body>
+  `;
   fs.writeFileSync(file.replace(/\.md$/, ".html"), 
-    marked(fs.readFileSync(file, encoding)), encoding);
+    wrapped, encoding);
 }

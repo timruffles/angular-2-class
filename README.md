@@ -25,9 +25,33 @@ The class is exercise driven, so it's worth having a glance over the below to le
 
 # whenever we're working on an exercise together, I'll point you to the exercises folder
 ./exercises
+
+# we'll be building an app today, this is where you'll be writing most of your code
+./app
 ```
 
 ## Exercises
 
-The exercises are split into a number of HTML (or markdown) files.
+The exercises are split into steps in `./exercises`.
+
+Here are our goals in the exercises today. They're intended to be chances to use what you've learned, not puzzles. If it's not clear what to do, ask me!
+
+All Angular 2 work should be written in `./app.`
+
+Run `npm start` to:
+
+1. compile your code in `/app` on change
+1. open a browser to a live-reloading page
+1. if you don't see what you expect, right click and click 'Inspect'. Then open the console tab
+
+### Order
+
+1. hello-angular
+1. typescript
+1. components
+1. templates
+1. input-output
+1. http
+
+
 

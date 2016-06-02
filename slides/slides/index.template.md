@@ -14,8 +14,6 @@ http
 
 routing
 
-d3
-
 thanks
 
 

@@ -1,0 +1,57 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="input-output">Input Output</h1>
+<p>Write code in <code>./exercises/app</code>.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li><p>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</p>
+</li>
+<li><p>passing in values</p>
+<ol>
+<li>in <code>App</code>, define a <code>maxAge</code> property and assign <code>24 * 60 * 60 * 1000</code> to it</li>
+<li>using template syntax, pass in <code>maxAge</code> to the <code>ChartControl</code></li>
+<li>you should see Angular complain that <code>maxAge</code> is not a &quot;known native property&quot;</li>
+<li>why? we&#39;ll fix this in the next step</li>
+</ol>
+</li>
+<li>having our component accept input<ol>
+<li>we need to tell Angular our <code>chart-control</code> component has an input for that type</li>
+<li>in <code>ChartControl</code>, define an input called <code>maxAge</code>. Type it as a <code>number</code></li>
+<li>we&#39;d like to see the value of our input for debugging</li>
+<li>add a <code>ngOnChanges(changes)</code> method, and <code>console.log(changes)</code></li>
+<li>bind the <code>maxAge</code> property to the range&#39;s <code>max=</code> attribute. It should set itself on load</li>
+</ol>
+</li>
+<li>listening to output<ol>
+<li>we want to listen to <code>filtered</code> events from <code>ChartControl</code> in <code>App</code>, and handle them</li>
+<li>listen to a <code>filtered</code> event on the <code>chart-control</code> element in <code>App</code>, handling it and passing the <code>$event</code> variable into a new <code>App</code> method called <code>setFilter</code></li>
+<li>you should see Angular complain that <code>filtered</code> is not a &quot;known native property&quot;</li>
+<li>why?</li>
+<li>we need to tell Angular we&#39;re emitting <code>filtered</code> events</li>
+<li>in <code>ChartControl</code>, define an output called <code>filtered</code>. It&#39;s an <code>EventEmitter</code>. Use the <a href="https://angular.io/docs/ts/latest/cheatsheet.html">cheatsheet</a> to remind yourself how</li>
+<li>define <code>setFilter</code> as a simple console logger - we&#39;ll get it to fire later</li>
+</ol>
+</li>
+<li>firing events<ol>
+<li>we want to fire <code>filtered</code> events each time the user configures our <code>ChartControl</code> via our <code>maxAge</code> slider</li>
+<li>we need to store the state of our filter - define a <code>filter</code> propert and initialize it with <code>maxAge: 0</code></li>
+<li>listen to the <code>change</code> event of our <code>input</code> in <code>ChartControl</code>. handling it with a <code>setMaxAge(maxAgeInput.value)</code>. You&#39;ll want to define a local variable <code>maxAgeInput</code> - use the cheat sheet</li>
+<li>in <code>setMaxAge(age: number)</code>, call <code>updateFilter({ maxAge: age })</code></li>
+<li>define <code>updateFilter(changes)</code> as a method that<ol>
+<li>uses <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign</code></a> to copy the current filter state, update it with changes, and reassign it to <code>filter</code></li>
+<li>then uses <code>emit</code> on our <code>filtered</code> output, passing the new filter as the event</li>
+</ol>
+</li>
+<li>when you move the maxAge slider, you should see your <code>setFilter</code> handler in <code>App</code> fire</li>
+</ol>
+</li>
+</ol>
+
+    </body>
+  

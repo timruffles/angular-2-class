@@ -1,0 +1,43 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="templates">Templates</h1>
+<p>Write code in <code>./exercises/app</code>.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li><p>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</p>
+</li>
+<li><p>use this (<a href="https://angular.io/docs/ts/latest/cheatsheet.html">cheatsheet</a>) for reference - there&#39;s lots of syntax!</p>
+</li>
+<li>displaying data<ol>
+<li>we want to display some data in our template</li>
+<li>define a <code>constructor</code> for your <code>App</code> component</li>
+<li>assign a string property with a name of your choice</li>
+<li>use the interpolation syntax to display it in the template </li>
+<li>also try out the interpolation syntax out with the <code>title=</code> attribute of an element. Hover over it to see the browser title popup - does the interpolation work?</li>
+</ol>
+</li>
+<li>configuring elements from data<ol>
+<li>we want to use Angular to change the color of an element, controlled by a property</li>
+<li>define a property holding an HTML colour string</li>
+<li>use the attribute syntax to bind that to the <code>color</code> style attribute of an element in your <code>App</code> template</li>
+</ol>
+</li>
+<li>responding to user input<ol>
+<li>we want to define a + and - button that makes an element&#39;s text size grow and shrink</li>
+<li>define a <code>fontSize</code> attribute on <code>App</code></li>
+<li>bind it to the <code>font-size</code> style property of an element </li>
+<li>define a <code>changeTextSize(delta: number)</code> method on <code>App</code></li>
+<li>create two <code>&lt;button&gt;</code> elements, one with a <code>+</code> and one <code>-</code></li>
+<li>use event listener syntax to listen to click events, with positive and negative deltas</li>
+</ol>
+</li>
+</ol>
+
+    </body>
+  
