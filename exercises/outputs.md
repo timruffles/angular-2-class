@@ -1,24 +1,4 @@
-# Input Output
 
-Write code in `./exercises/app`.
-
-Run `npm start` to:
-
-1. compile your code in `/app` on change
-1. open a browser to a live-reloading page
-1. if you don't see what you expect, right click and click 'Inspect'. Then open the console tab
-
-1. passing in values
-  1. in `App`, define a `maxAge` property and assign `24 * 60 * 60 * 1000` to it
-  1. using template syntax, pass in `maxAge` to the `ChartControl`
-  1. you should see Angular complain that `maxAge` is not a "known native property"
-  1. why? we'll fix this in the next step
-1. having our component accept input
-  1. we need to tell Angular our `chart-control` component has an input for that type
-  1. in `ChartControl`, define an input called `maxAge`. Type it as a `number`
-  1. we'd like to see the value of our input for debugging
-  1. add a `ngOnChanges(changes)` method, and `console.log(changes)`
-  1. bind the `maxAge` property to the range's `max=` attribute. It should set itself on load
 1. listening to output
   1. we want to listen to `filtered` events from `ChartControl` in `App`, and handle them
   1. listen to a `filtered` event on the `chart-control` element in `App`, handling it and passing the `$event` variable into a new `App` method called `setFilter`

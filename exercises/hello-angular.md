@@ -1,6 +1,6 @@
 # Hello Angular
 
-Write code in `./exercises/app`.
+Write code in `./app`.
 
 Run `npm start` to:
 

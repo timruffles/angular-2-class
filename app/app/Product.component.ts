@@ -1,10 +1,11 @@
-import { Component } from "@angular/core";
+import { Input, Component } from "@angular/core";
+import { product } from "./types";
 
 @Component({
    selector: "product",
    template: `
-    <h2>Cape patch</h2> 
-    <p>Hole in your cape? We've got you covered</p>
+    <h2>{{ product?.name }}</h2> 
+    <p>{{ product?.description }}</p>
 
     <p><em>In cart:</em> {{ quantity }}</p>
     <button class='button'
@@ -14,8 +15,14 @@ import { Component } from "@angular/core";
 export class Product {
   quantity: 0;
 
+  @Input() product: product;
+
   purchase() {
     this.quantity += 1;
+  }
+
+  ngOnChanges(ch) {
+    console.log(ch);
   }
 }
 
