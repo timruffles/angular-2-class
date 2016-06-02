@@ -1,10 +1,14 @@
 ## TypeScript
 
+## How-to
+
 All TypeScript work should be written in angular-2-exercise/typescript-exercise.
 
 Run `npm run exercise` to start an interactive session. Each change you make to a TypeScript file will recompile your code and run the `exercise` module.
 
 Write lots of `console.log()`s messages to yourself to test your understanding.
+
+## Steps
 
 1. typescript-vars 
 	1. in: exercises/typescript.ts
