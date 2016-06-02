@@ -30,3 +30,6 @@ The below is intended to be a chance to use what you've learned, not a puzzle. I
 
 - [Cheatsheet](https://angular.io/docs/ts/latest/guide/cheatsheet.html)
 
+## Goal
+
+![goal](hello-angular.png)

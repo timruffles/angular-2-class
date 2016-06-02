@@ -22,3 +22,7 @@ The below is intended to be a chance to use what you've learned, not a puzzle. I
 1. will the component know about Product yet?
 1. it won't - we need to explicitly tell it about our component. In the @Component decorator, add a `directives:` property and set its value to an array containing `Product` 
 1. you should now see your `Product` component
+
+## Goal
+
+![goal](components.png)
