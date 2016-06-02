@@ -13,16 +13,12 @@ import { product } from "./types";
    `,
 })
 export class Product {
-  quantity: 0;
+  quantity = 0;
 
   @Input() product: product;
 
   purchase() {
     this.quantity += 1;
-  }
-
-  ngOnChanges(ch) {
-    console.log(ch);
   }
 }
 

@@ -1,19 +1,17 @@
 import { Component } from "@angular/core";
-import { Product } from "./Product.component";
+import { ProductList } from "./ProductList.component";
 import { product } from "./types";
-import { staticProductList } from "./fixtures";
+import { longerStaticProductList } from "./fixtures";
 
 @Component({
    selector: "app",
-   directives: [Product],
+   directives: [ProductList],
    template: `
     <h1>Shop</h1> 
-    <product [product]="products[0]"></product>
-    <product [product]="products[1]"></product>
-    <product [product]="products[2]"></product>
+    <product-list [products]="products"></product-list>
    `,
 })
 export class App {
-  products = staticProductList;
+  products = longerStaticProductList;
 }
 

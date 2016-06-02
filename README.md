@@ -50,8 +50,8 @@ Run `npm start` to:
 1. typescript
 1. components
 1. templates
-1. input-output
-1. TODO build-in-directives - product list
+1. inputs
+1. built-in-directives
 1. http
 
 
