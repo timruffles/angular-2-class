@@ -1,5 +1,5 @@
-import { Input, Component } from "@angular/core";
-import { product } from "./types";
+import { Input, Output, Component, EventEmitter } from "@angular/core";
+import { product, cartEntry } from "./types";
 
 @Component({
    selector: "product",
@@ -7,18 +7,21 @@ import { product } from "./types";
     <h2>{{ product?.name }}</h2> 
     <p>{{ product?.description }}</p>
 
-    <p><em>In cart:</em> {{ quantity }}</p>
+    <p><em>In cart:</em> {{ entry ? entry.quantity : "Loading..." }}</p>
     <button class='button'
-            (click)="purchase()">Add to cart</button>
+            [disabled]="!entry"
+            (click)="purchase()">
+      Add to cart
+    </button>
    `,
 })
 export class Product {
-  quantity = 0;
-
   @Input() product: product;
+  @Input() entry: cartEntry;
+  @Output() added = new EventEmitter<{ product: product }>();
 
   purchase() {
-    this.quantity += 1;
+    this.added.emit({ product: this.product });
   }
 }
 
