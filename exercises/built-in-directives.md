@@ -1,4 +1,4 @@
-# Hello Angular
+# Built-in directives
 
 ## Steps
 

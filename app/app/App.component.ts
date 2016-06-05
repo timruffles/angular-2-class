@@ -1,17 +1,29 @@
 import { Component } from "@angular/core";
+import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from "@angular/router";
 import { ProductList } from "./ProductList.component";
-import { product } from "./types";
-import { longerStaticProductList } from "./fixtures";
+import { Product } from "./Product.component";
 
 @Component({
    selector: "app",
-   directives: [ProductList],
+   directives: [ROUTER_DIRECTIVES],
+   providers: [ROUTER_PROVIDERS],
    template: `
     <h1>Shop</h1> 
-    <product-list [products]="products"></product-list>
+    <router-outlet></router-outlet>
    `,
 })
+@Routes([
+    {
+        path: "/",
+        component: ProductList,
+    },
+    {
+        path: "/products/:id",
+        component: Product,
+    },
+])
 export class App {
-  products = longerStaticProductList;
+  constructor(private router: Router) {
+  }
 }
 
