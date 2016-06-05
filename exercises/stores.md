@@ -39,5 +39,5 @@ Stores manage our access to the data-layer. We're going to move from hard-coded 
 
 This exercise doesn't change the app visually from last time. It should still work though! :)
 
-![goal](build-in-directives.png)
+![goal](built-in-directives.png)
 
