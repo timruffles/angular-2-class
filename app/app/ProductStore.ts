@@ -7,7 +7,7 @@ export class ProductStore {
   private byId = new Map<number, product>();
 
   constructor() {
-    const kvs = longerStaticProductList.map(p => [p.id, p]);
+    const kvs = longerStaticProductList.map<[number,product]>((p: product) => [p.id, p]);
     this.byId = new Map<number, product>(kvs);
   }
 

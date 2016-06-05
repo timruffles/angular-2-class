@@ -13,13 +13,12 @@ import { ProductStore } from "./ProductStore";
 })
 export class ProductPage {
   product: product;
-  @Input() productId: number;
 
-  constructor(private store: ProductStore) {
+  constructor(private store: ProductStore, private segment: RouteSegment) {
   }
 
   ngOnInit() {
-    this.store.get(Number(this.productId))
+    this.store.get(Number(this.segment.getParam('id')))
       .then(product => this.product = product);
   }
   

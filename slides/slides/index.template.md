@@ -10,9 +10,13 @@ component tree
 
 input output
 
-http
+stores
 
 routing
+
+http
+
+login
 
 thanks
 
