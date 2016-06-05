@@ -52,8 +52,8 @@ Run `npm start` to:
 1. templates
 1. inputs
 1. built-in-directives
+1. stores
 1. routing
-1. http
 1. outputs
 
 

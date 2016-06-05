@@ -7,11 +7,8 @@ export class ProductStore {
   private byId = new Map<number, product>();
 
   constructor() {
-    this.byId = new Map<number, product>();
-
-    for(const product of longerStaticProductList) {
-      this.byId.set(product.id, product);
-    }
+    const kvs = longerStaticProductList.map(p => [p.id, p]);
+    this.byId = new Map<number, product>(kvs);
   }
 
   get(id: number): Promise<product> {

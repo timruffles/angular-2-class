@@ -1,17 +1,19 @@
 import { Input, Component } from "@angular/core";
-import { Product} from "./Product.component";
+import { ProductPage } from "./ProductPage.component";
 import { product } from "./types";
 import { ProductStore } from "./ProductStore";
 
 
 @Component({
   selector: "product-list",
-  directives: [Product],
+  directives: [ProductPage],
   template: `
     <h2>Products</h2>
 
-    <product *ngFor="let product of products" [product]=product>
-    </product>
+    <product-page *ngFor="let product of products" 
+                  [productId]=product.id
+                  >
+    </product-page>
   `
 })
 export class ProductList {
