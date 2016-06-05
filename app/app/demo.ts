@@ -1,7 +1,5 @@
-import { App } from "./App.component";
+import { Demo } from "./Demo.component";
 import { bootstrap } from "@angular/platform-browser-dynamic";
 
-
-bootstrap(App)
+bootstrap(Demo)
   .catch(err => console.error(err));
-
