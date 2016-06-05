@@ -1,8 +1,8 @@
 import { Input, Component } from "@angular/core";
 import { Product} from "./Product.component";
 import { product } from "./types";
-import { longerStaticProductList } from "./fixtures";
 import { ROUTER_DIRECTIVES } from "@angular/router";
+import { ProductStore } from "./ProductStore";
 
 
 @Component({
@@ -17,10 +17,14 @@ import { ROUTER_DIRECTIVES } from "@angular/router";
   `
 })
 export class ProductList {
-  constructor() {
-    console.log("I was made", this);
+  private products: product[];
+
+  constructor(private store: ProductStore) {
   }
-  products = longerStaticProductList;
+
+  ngOnInit() {
+    this.store.all().then(ps => this.products = ps);
+  }
   
 }
 

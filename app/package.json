@@ -6,7 +6,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc --watch",
     "tsc:exercise": "tsc --watch -p typescript-exercises",
-    "live": "live-server --open=/",
+    "live": "live-server --open=/ --entry-file=/index.html --quiet",
     "start": "concurrently \"npm run tsc:w\" \"npm run live\" ",
     "exercise": "concurrently \"npm run tsc:exercise\" \"nodemon --ext ts -w typescript-exercises typescript-exercises/exercise.js\"",
     "build:exercises": "node './.build-exercises.js' *.md",

@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { Router, Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from "@angular/router";
 import { ProductList } from "./ProductList.component";
-import { Product } from "./Product.component";
+import { ProductPage } from "./ProductPage.component";
+import { ProductStore } from "./ProductStore";
 
 @Component({
    selector: "app",
    directives: [ROUTER_DIRECTIVES],
-   providers: [ROUTER_PROVIDERS],
+   providers: [ROUTER_PROVIDERS, ProductStore],
    template: `
     <h1>Shop</h1> 
     <router-outlet></router-outlet>
@@ -19,7 +20,7 @@ import { Product } from "./Product.component";
     },
     {
         path: "/products/:id",
-        component: Product,
+        component: ProductPage,
     },
 ])
 export class App {
