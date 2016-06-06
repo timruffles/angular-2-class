@@ -6,7 +6,6 @@
   var map = {
     'app': 'app',
     '@angular': 'node_modules/@angular',
-    'traceur': "node_modules
     'rxjs': 'node_modules/rxjs',
     "traceur":"github:jmcriffey/bower-traceur@0.0.87",
     "traceur-runtime":"github:jmcriffey/bower-traceur-runtime@0.0.87",
