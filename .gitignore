@@ -2,3 +2,5 @@ app/app/*.js
 app/app/*.map
 app/typescript-exercises/*.js
 app/typescript-exercises/*.map
+
+app/node_modules
