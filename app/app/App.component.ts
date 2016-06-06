@@ -15,7 +15,7 @@ const SHOP_NAME = "Super shop";
   {
     path: "/products/:id",
     component: ProductPage,
-  }
+  },
 ])
 @Component({
   selector: "app",

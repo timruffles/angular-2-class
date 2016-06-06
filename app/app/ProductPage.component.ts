@@ -8,7 +8,9 @@ import { product } from "./types";
   selector: "product-page",
   directives: [Product],
   template: `
-    <product [product]=product>
+    <product [product]=product
+            (added)="added($event.product)"
+             >
     </product>
   `,
 })
@@ -26,6 +28,9 @@ export class ProductPage {
       .then(product => this.product = product);
   }
 
+  added(product: product) {
+    console.log("added (smart component)", product);
+  }
 }
 
 
