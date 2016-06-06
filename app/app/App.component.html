@@ -1,0 +1,15 @@
+<h1 [title]=title
+    [class.callout]="true">{{ title }}</h1>
+<button (click)="handler()" 
+        [disabled]="!foo"
+        class="button"
+  >
+  Click me
+</button>
+
+<div class='callout success'
+     [hidden]='!clicked'
+     >
+  You clicked!
+</div>
+`
