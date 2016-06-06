@@ -2,7 +2,7 @@
 
 ## How-to
 
-All TypeScript work should be written in angular-2-exercise/typescript-exercise.
+All TypeScript work should be written in app/typescript-exercise.
 
 Run `npm run exercise` to start an interactive session. Each change you make to a TypeScript file will recompile your code and run the `exercise` module.
 
@@ -11,7 +11,7 @@ Write lots of `console.log()`s messages to yourself to test your understanding.
 ## Steps
 
 1. typescript-vars 
-	1. in: exercises/typescript.ts
+	1. in: app/typescript-exercises/exercise.ts
 	1. define a const as a number, and assign it a string literal. What happens?
 	1. define a const as an array of numbers, and assign it an empty array
 		1. then assign it an array of strings
