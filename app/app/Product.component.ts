@@ -7,6 +7,8 @@ import { product } from "./types";
   template: `
     <h2>{{ product?.name }}</h2>
     <p>{{ product?.description }}</p>
+    <p><em>Quantity</em>:
+     {{ entry ? entry.quantity : "Loading..." }}</p>
 
     <button class='button'
             (click)="added()"
@@ -17,6 +19,7 @@ import { product } from "./types";
 })
 export class Product {
   @Input() product: product;
+  @Input() entry: any;
 
   // would default to 'addToCart' without
   // param to @Output()

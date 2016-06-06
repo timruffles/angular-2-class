@@ -3,6 +3,8 @@ import { ProductList } from "./ProductList.component";
 import { ProductPage } from "./ProductPage.component";
 import { staticProductList } from "./fixtures";
 import { ProductStore } from "./ProductStore";
+import { Cart } from "./Cart";
+import { ClientStorage } from "./ClientStorage";
 import { ROUTER_PROVIDERS, ROUTER_DIRECTIVES, Routes, Router } from "@angular/router";
 
 const SHOP_NAME = "Super shop";
@@ -21,6 +23,8 @@ const SHOP_NAME = "Super shop";
   selector: "app",
   directives: [ProductList, ROUTER_DIRECTIVES],
   providers: [
+    Cart,
+    ClientStorage,
     ROUTER_PROVIDERS,
     { provide: ProductStore, 
       useClass: ProductStore }
