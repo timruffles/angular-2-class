@@ -61,7 +61,7 @@ this.loginForm = builder.group({
        >
 ```
 
-## Name
+## `ngControl`
 
 ```html
 <input ...
@@ -86,7 +86,7 @@ form.superName // this is the ngControl instance
 
 ## Using validators
 
-- we reference via... `ngForm`?!
+- we reference `ngControl` via... `ngForm`?!
 
 ```html
 <input ...

@@ -8,14 +8,41 @@
       <h1 id="http">HTTP</h1>
 <h2 id="steps">Steps</h2>
 <ol>
-<li>creating a service to talk to our server<ol>
+<li><p>creating a service to talk to our server</p>
+<ol>
 <li>copy the <code>pre-written/Payment</code> class over and import it</li>
 <li>you&#39;ll note we need to import HTTP</li>
-<li>also - what do we need to ensure is available at the top level of our app?</li>
+<li>also - what do we need to ensure is available at the top level of our app?<ol>
+<li><code>HTTP_PROVIDERS</code>! They live in `@angular/http&#39;</li>
 </ol>
 </li>
-<li>defining our <code>API_URL</code></li>
+<li>we also need our <code>API_URL</code><ol>
+<li>the token for this is in <code>types</code></li>
+<li>use <code>{provide: API_URL, useValue: &quot;http://localhost:3999&quot;}</code></li>
 </ol>
+</li>
+<li><p>inject <code>Http</code> and <code>API_URL</code> into Payment, and implement it using Angular&#39;s <code>http</code> module</p>
+<ol>
+<li>the successful endpoint is <code>API_URL + &quot;/test/checkout/success&quot;</code></li>
+<li>the failed endpoint is <code>API_URL + &quot;/test/checkout/failure&quot;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>checkout<ol>
+<li>we want to use our payment class on submit now</li>
+<li>pass the submitted form value to payment success or failure</li>
+<li>explain to the user what&#39;s going on<ol>
+<li>update the template to display a loading message once we start submit</li>
+<li>display a success message on success</li>
+<li>display a failure message on failure</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="goal">Goal</h2>
+<p><img src="http.png" alt="goal"></p>
 
     </body>
   
