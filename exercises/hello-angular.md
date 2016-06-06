@@ -19,7 +19,7 @@ The below is intended to be a chance to use what you've learned, not a puzzle. I
 1. booting the application with our component
   1. our component will be the root of the application's component tree
   1. create `app/main.ts` - this will be responsible for starting the app
-  1. import the `bootstrap` method - it's in `angular2/platform-browser-dynamic`
+  1. import the `bootstrap` method - it's in `@angular/platform-browser-dynamic`
   1. import our `App` component
   1. call `bootstrap` with `App` to boot up the application
   1. You should see the HTML from your template
