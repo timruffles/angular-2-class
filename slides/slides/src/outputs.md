@@ -1,15 +1,23 @@
 ## Outputs
 {title:1}
 
-## Data-down, events-up
+## We've seen data-down
 
-![outputs](img/outputs.png)
+![data-down](img/data-down.png)
 
-## ...events-up
+## Now events up
+
+## Events-up
+
+![outputs](img/events-up.png)
 
 ## What goes up?
 
 ## Business events
+
+## Data-flow
+
+![outputs](img/data-flow.png)
 
 ## Events up
 

@@ -5,6 +5,10 @@
 
 - get data into our component!
 
+## Data-down
+
+![data-down](img/data-down.png)
+
 ## Data in
 
 ```html
