@@ -2,6 +2,8 @@ import { Component, Input } from
   "@angular/core";
 import { ProductStore } from "./ProductStore";
 
+import { RouteSegment } from "@angular/router";
+
 import { Product } from "./Product";
 import { product } from "./types";
 
@@ -16,13 +18,13 @@ import { product } from "./types";
 export class ProductPage {
   product: product;
 
-  @Input("productId") productId: number;
-
-  constructor(private store: ProductStore) {
+  constructor(private store: ProductStore, private segment: RouteSegment) {
   }
 
   ngOnInit() {
-    this.store.get(this.productId)
+    const productId = parseInt(this.segment.getParam("id"));
+
+    this.store.get(productId)
       .then(product => {
         this.product = product;
       });

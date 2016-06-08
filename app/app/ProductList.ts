@@ -1,5 +1,8 @@
-import { Component } from 
+import { Component, forwardRef } from 
   "@angular/core";
+
+import { ROUTER_DIRECTIVES }
+  from "@angular/router";
   
 import { ProductPage }
   from "./ProductPage";
@@ -8,15 +11,22 @@ import { ProductStore } from "./ProductStore";
 
 import { product } from "./types";
 
+
+import { Routes } from "@angular/router";
+
 @Component({
   selector: "product-list",
-  directives: [ProductPage],
+  directives: [ProductPage, ROUTER_DIRECTIVES],
   providers: [],
   template: `
-    <product-page *ngFor='let product of filteredProducts()'
-                  [productId]='product.id'
-                  >
-    </product-page>
+    <p
+         *ngFor='let product of products'
+      >
+      <a [routerLink]='["/products", product.id]'
+        >
+        {{ product.name }}
+      </a>
+    </p>
   `,
 })
 export class ProductList {
