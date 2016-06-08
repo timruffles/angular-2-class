@@ -3,9 +3,14 @@ import { Component } from
 
 import { ROUTER_DIRECTIVES, ROUTER_PROVIDERS, Routes, Router }
   from "@angular/router";
+
+import { Checkout } from "./Checkout";
   
 import { ProductList }
   from "./ProductList";
+
+import { Cart } from "./Cart";
+import { ClientStorage } from "./ClientStorage";
 
 import { ProductPage }
   from "./ProductPage";
@@ -21,11 +26,13 @@ import { product } from "./types";
     component: ProductList }, 
   { path: "/products/:id",
     component: ProductPage }, 
+  { path: "/checkout",
+    component: Checkout }, 
 ])
 @Component({
   selector: "app",
   directives: [ROUTER_DIRECTIVES],
-  providers: [ProductStore, ROUTER_PROVIDERS],
+  providers: [ProductStore, ClientStorage, Cart, ROUTER_PROVIDERS],
   template: `
     <router-outlet></router-outlet>
   `,

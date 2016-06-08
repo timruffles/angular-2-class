@@ -1,7 +1,10 @@
-import { Component, Input, SimpleChange } from 
+import { Component, Input, SimpleChange, 
+  Output, EventEmitter } from 
   "@angular/core";
 
-import { product } from "./types";
+import { product, cartEntry } from "./types";
+
+export type added = { product: product };
 
 @Component({
   selector: "product",
@@ -14,11 +17,11 @@ import { product } from "./types";
     <h2 >{{ product?.name }}</h2>
     <p>{{ product?.description }}</p>
 
-    <p><em>In basket: </em> {{ quantity }}</p>
+    <p><em>In basket: </em> {{ cartEntry ? cartEntry.quantity : "Loading..." }}</p>
 
     <button class='button'
             (click)="purchase()"
-            [class.purchased]="quantity >= 1"
+            [disabled]="!cartEntry"
       >
       Buy me
     </button>
@@ -27,13 +30,12 @@ import { product } from "./types";
 export class Product {
 
   @Input("product") product: product;
-
-  quantity = 0;
+  @Input("cartEntry") cartEntry: cartEntry;
+  @Output("added") added = new EventEmitter<added>();
 
   purchase() {
-    this.quantity += 1;
+    this.added.emit({ product: this.product });
   }
 
-  ngOnChanges(changes: SimpleChange) {
-  }
+
 }

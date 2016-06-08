@@ -16,7 +16,7 @@ import { Routes } from "@angular/router";
 
 @Component({
   selector: "product-list",
-  directives: [ProductPage, ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES],
   providers: [],
   template: `
     <p

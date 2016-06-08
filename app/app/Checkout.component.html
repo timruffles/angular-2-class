@@ -1,6 +1,7 @@
 <h2>Checkout</h2>
 
-<form 
+<form (ngSubmit)="submitted(checkoutForm.value)"
+      #checkoutForm="ngForm"
       >
   <div class="row">
     <div class="large-4 columns">
@@ -29,9 +30,18 @@
         <input type="text"
                placeholder="e.g 4444 4444 4444 4444" 
                name=cardNumber
+               pattern='[\-\d ]+'
+               ngControl="cardNumber"
+               #cardNumber="ngForm"
                >
       </label>
       <small class='callout warning error'
+             *ngIf="cardNumber.errors?.required"
+             >
+        Please enter a card number
+      </small>
+      <small class='callout warning error'
+             *ngIf="cardNumber.errors?.pattern"
              >
         Please enter a valid card (16 digits, e.g 4444 4444 4444 4444)
       </small>
@@ -47,34 +57,6 @@
           <td>Sub-total</td>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of checkout.items">
-          <td>
-            {{ item.name }}
-          </td>
-          <td>
-            {{ item.quantity }}
-          </td>
-          <td>
-            {{ item.price }}
-          </td>
-          <td>
-            {{ item.subTotal }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-          </td>
-          <td>
-          </td>
-          <td>
-            Total:
-          </td>
-          <td>
-            {{ checkout.total }}
-          </td>
-        </tr>
-      </tbody>
     </table>
   </div>
   <div class="row">
@@ -85,6 +67,7 @@
     </div>
     <div class="small-offset-8 small-4 columns">
       <button class='button'
+              [disabled]="!checkoutForm.form.valid"
               >
         Checkout
       </button>
