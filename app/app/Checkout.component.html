@@ -1,0 +1,124 @@
+<h2>Checkout</h2>
+
+<form #checkoutForm='ngForm'
+      (ngSubmit)="doCheckout(checkoutForm.value)"
+      >
+  <div class="row">
+    <div class="large-4 columns">
+      <label>Superhero Name
+        <input type="text" 
+               placeholder="e.g Superman"
+               ngControl="superName"
+               #superName="ngForm"
+               name="superName"
+               required
+               >
+      </label>
+    </div>
+    <div class="large-4 columns">
+      <label
+        >Real Name
+        <input type="text"
+               placeholder="e.g Clark Kent"
+               name="realName"
+               ngControl="realName"
+               required
+               >
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns"
+      >
+      <label>
+        Super-card number (all super-banks accepted)
+        <input type="text"
+               placeholder="e.g 4444 4444 4444 4444" 
+               name=cardNumber
+               pattern='\d{16}'
+               ngControl="cardNumber"
+               #cardNumber="ngForm"
+               required
+               >
+      </label>
+      <small class='callout warning error'
+             *ngIf="cardNumber.errors?.required"
+             >
+        Please enter your card number
+      </small>
+
+      <small class='callout warning error'
+             *ngIf="cardNumber.errors?.pattern"
+             >
+        Please enter a valid card (16 digits, e.g 4444 4444 4444 4444)
+      </small>
+    </div>
+  </div>
+  <div class="row">
+    <table role="grid">
+      <thead>
+        <tr>
+          <td>Item</td>
+          <td>Quantity</td>
+          <td>Price</td>
+          <td>Sub-total</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of checkout.items">
+          <td>
+            {{ item.name }}
+          </td>
+          <td>
+            {{ item.quantity }}
+          </td>
+          <td>
+            {{ item.price }}
+          </td>
+          <td>
+            {{ item.subTotal }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            Total:
+          </td>
+          <td>
+            {{ checkout.total }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="small-8 columns">
+      <p class='callout'
+         >
+      </p>
+    </div>
+    <div class="small-offset-8 small-4 columns">
+      <button class='button'
+              [disabled]='!checkoutForm.valid'
+              >
+        Checkout
+      </button>
+    </div>
+  </div>
+
+  <div class="alert-box"
+       *ngIf="transaction?.pending"
+       >
+    Processing
+  </div>
+
+  <div class="alert-box success"
+       *ngIf="transaction?.successful"
+       >
+    Your order was accepted and is being processed!
+  </div>
+
+</form>
