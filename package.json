@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build:exercises": "node './.build-exercises.js' exercises/*.md",
+    "build:slides": "cd slides && npm run slides",
     "postinstall": "cd app && npm install && cd ../ && cd slides && npm install"
   },
   "devDependencies": {
