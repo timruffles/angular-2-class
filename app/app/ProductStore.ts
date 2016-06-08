@@ -1,13 +1,7 @@
+import { Injectable } from "@angular/core";
 import { longerStaticProductList } from "./fixtures";
 import { product } from "./types";
-import { Injectable } from "@angular/core";
 
-interface ProductStore {
-  get(id: number): Promise<product>;
-  all(): Promise<product[]>;
-}
-
-@Injectable()
 export class ProductStore {
   private byId = new Map<number, product>();
 
@@ -24,3 +18,4 @@ export class ProductStore {
     return Promise.resolve(Array.from(this.byId.values()));
   }
 }
+

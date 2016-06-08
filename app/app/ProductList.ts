@@ -1,23 +1,33 @@
 import { Component } from 
   "@angular/core";
   
-import { Product }
-  from "./Product";
+import { ProductPage }
+  from "./ProductPage";
 
-import { staticProductList } from "./fixtures";
+import { ProductStore } from "./ProductStore";
 
 import { product } from "./types";
 
 @Component({
   selector: "product-list",
-  directives: [Product],
+  directives: [ProductPage],
+  providers: [],
   template: `
-    <product *ngFor='let product of filteredProducts()'
-             [product]='product'></product>
+    <product-page *ngFor='let product of filteredProducts()'
+                  [productId]='product.id'
+                  >
+    </product-page>
   `,
 })
 export class ProductList {
-  products: product[] = staticProductList;
+  products: product[] = [];
+
+  constructor(private store: ProductStore) {
+    this.store.all()
+      .then(products => {
+        this.products = products;
+      });
+  }
 
   filteredProducts() {
     return this.products.filter(p => p.name.length > 5)
