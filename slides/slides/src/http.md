@@ -13,9 +13,8 @@
 import { Http } from '@angular/http';
 
 export class Payment {
-    frontpage() {
-       return this.http.get(
-         \`https://www.reddit.com/.json\`)
+    checkout() {
+       return this.http.post('/some/payment/api');
     }
 }
 ```
@@ -25,7 +24,7 @@ export class Payment {
 ## How do we get an instance?
 
 ```typescript
-   return this.http.get(\`https://www.reddit.com/.json\`)
+   return this.http.post('/some/payment/api');
 ```
 
 ## Ask for it!
@@ -64,7 +63,7 @@ import { Payment } from "./Payment.service";
 @Component(/\* ... \*/)
 export class Checkout {
   // we'll get an instance
-  constructor(reddit: Payment) {
+  constructor(payment: Payment) {
   }
 }
 ```

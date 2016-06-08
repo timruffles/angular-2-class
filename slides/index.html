@@ -1181,9 +1181,8 @@ class Product {
 <pre><code class="lang-typescript">import { Http } from &#39;@angular/http&#39;;
 
 export class Payment {
-    frontpage() {
-       return this.http.get(
-         `https://www.reddit.com/.json`)
+    checkout() {
+       return this.http.post(&#39;/some/payment/api&#39;);
     }
 }
 </code></pre>
@@ -1193,7 +1192,7 @@ export class Payment {
 </section>
 
 <section  class=""><h2 id="how-do-we-get-an-instance-">How do we get an instance?</h2>
-<pre><code class="lang-typescript">   return this.http.get(`https://www.reddit.com/.json`)
+<pre><code class="lang-typescript">   return this.http.post(&#39;/some/payment/api&#39;);
 </code></pre>
 </section>
 
@@ -1230,7 +1229,7 @@ import { HTTP_PROVIDERS } from &quot;@angular/http&quot;;
 @Component(/* ... */)
 export class Checkout {
   // we&#39;ll get an instance
-  constructor(reddit: Payment) {
+  constructor(payment: Payment) {
   }
 }
 </code></pre>
