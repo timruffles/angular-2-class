@@ -139,7 +139,7 @@
 ## Exercise
 {exercise:1}
 
-    build-in-directives
+    built-in-directives
 
 
 

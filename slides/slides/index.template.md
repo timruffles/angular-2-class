@@ -6,11 +6,11 @@ components
 
 typescript
 
-built in directives
-
 component tree
 
 inputs
+
+built in directives
 
 stores
 

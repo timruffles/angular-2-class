@@ -8,12 +8,16 @@
       <h1 id="outputs">Outputs</h1>
 <p>Outputs all us to emit events from our components. The big idea of Angular 2 data-flow is data-down, events up. Outputs are where events come from.</p>
 <h2 id="steps">Steps</h2>
+<p>Our add to cart button isn&#39;t doing much. Let&#39;s fix that!</p>
+<h3 id="using-the-cart-component">Using the <code>Cart</code> component</h3>
 <ul>
-<li>Our add to cart button isn&#39;t doing much. Let&#39;s fix that!</li>
 <li>We want to use a <code>Cart</code> component that holds the products we&#39;ve bought<ul>
 <li>it&#39;s in <code>app/pre-built</code> - copy it to <code>app/app/Cart</code></li>
 </ul>
 </li>
+</ul>
+<h3 id="emitting-events-via-output-">Emitting events via <code>@Output()</code></h3>
+<ul>
 <li>Our <code>Product</code> component needs to react to people clicking on <code>Add to cart</code><ul>
 <li>This is our first <code>Output</code>. We want to emit a high-level event each time someone clicks - in other words turning a <code>DOM</code> event into a business event<ul>
 <li>First off, import <code>Output</code> - this is the <code>@Output()</code> decorator - and <code>EventListener</code>  from <code>@angular/core</code></li>
@@ -27,6 +31,9 @@
 <li>Also - the entries are asynchronous. Update the template to display a loading message while a cart entry is being updated</li>
 </ul>
 </li>
+</ul>
+<h3 id="listening-to-events-in-smart-components">Listening to events in smart components</h3>
+<ul>
 <li>In our <code>ProductPage</code>, we want to react to items being added to the cart<ul>
 <li>Why not in the <code>Product</code>?<ul>
 <li>As it&#39;s not a smart component, it shouldn&#39;t know about stores</li>

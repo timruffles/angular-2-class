@@ -9,16 +9,14 @@
 <p>We&#39;re going to add routing to our shop, so users can go directly
 to a product via a link.</p>
 <h2 id="steps">Steps</h2>
+<p>We want to create a route that matches the home page, and displays our product list, and a route that allows navigation directly to a product.</p>
+<h3 id="defining-where-routed-content-is-displayed">Defining where routed content is displayed</h3>
+<p>We need to tell Angular where to display our routed content.</p>
 <ul>
-<li>First we&#39;ll load our current home page via a route<ul>
-<li>We want to create a route that matches the home page, and displays our product list<ul>
-<li>Fist, we need somewhere for our route to display!<ul>
 <li>Our <code>product-list</code> is now going to be access via a route, so remove it from the template</li>
 <li>Replace it with <code>&lt;router-outlet&gt;</code></li>
 <li>Nothing happens, why?</li>
 <li>Because we haven&#39;t imported the routing system!</li>
-</ul>
-</li>
 <li>We&#39;ll need to import the routing directives and providers, and ensure they&#39;re available throughout our app<ul>
 <li>Import <code>{ ROUTER_PROVIDERS, ROUTER_DIRECTIVES }</code> from <code>@angular/router</code></li>
 <li>These are the providers (services) and directives (components and directives) for routing</li>
@@ -26,24 +24,27 @@ to a product via a link.</p>
 </ul>
 </li>
 </ul>
-</li>
+<h3 id="defining-routes">Defining routes</h3>
+<ul>
 <li>Now we&#39;ve got the providers and directives, let&#39;s define a route<ul>
 <li><code>@Routes()</code> is a decorator just like <code>@Component()</code></li>
 <li>Let&#39;s use <code>@Routes()</code> to define our first route - &quot;/&quot; will route to <code>ProductList</code><ul>
 <li>add <code>path: &quot;/&quot;</code> and <code>component: ProductList</code></li>
 </ul>
 </li>
-<li>Nothing happens yet - why? Ah - we need a route</li>
+<li>Nothing happens yet - why? Ah - we need a router!</li>
 </ul>
 </li>
-<li>Though we define a route, nothing is happening! We need to ensure an instance of <code>Router</code> is created<ul>
+</ul>
+<h3 id="creating-a-router">Creating a router</h3>
+<p>Though we define a route, nothing is happening! We need to ensure an instance of <code>Router</code> is created.</p>
+<ul>
 <li>inject <code>Router</code> into our <code>App</code> constructor</li>
 <li>We should now boot up and be displaying the product list!</li>
 </ul>
-</li>
-</ul>
-</li>
-<li>Now we want to link to individual product pages<ul>
+<h3 id="creating-a-detail-view">Creating a detail view</h3>
+<p>We want to link to individual product pages.</p>
+<ul>
 <li>Let&#39;s create a route for a single product<ul>
 <li>Let&#39;s define a route that matches a product with an <code>id</code><ul>
 <li><code>{path: &#39;/products/:id&#39;,</code> is good, it&#39;ll match <code>/products/123</code> or <code>/products/some-product</code>.</li>
@@ -71,8 +72,9 @@ to a product via a link.</p>
 </ul>
 </li>
 </ul>
-</li>
-<li>Now we should be able to navigate to a product page, but no product data appears!<ul>
+<h3 id="loading-requested-data-from-the-store">Loading requested data from the store</h3>
+<p>Now we should be able to navigate to a product page, but no product data appears!</p>
+<ul>
 <li>That&#39;s because we are now specifying the id via our route<ul>
 <li>remove out <code>@Input()</code> as it&#39;s no longer needed</li>
 </ul>
@@ -84,8 +86,6 @@ to a product via a link.</p>
 </ul>
 </li>
 <li>Try out the links! You should be able to navigate to different product pages</li>
-</ul>
-</li>
 </ul>
 <h2 id="resources">Resources</h2>
 <h2 id="goal">Goal</h2>

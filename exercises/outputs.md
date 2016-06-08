@@ -4,9 +4,15 @@ Outputs all us to emit events from our components. The big idea of Angular 2 dat
 
 ## Steps
 
-- Our add to cart button isn't doing much. Let's fix that!
+Our add to cart button isn't doing much. Let's fix that!
+
+### Using the `Cart` component
+
 - We want to use a `Cart` component that holds the products we've bought
   - it's in `app/pre-built` - copy it to `app/app/Cart`
+
+### Emitting events via `@Output()`
+
 - Our `Product` component needs to react to people clicking on `Add to cart`
   - This is our first `Output`. We want to emit a high-level event each time someone clicks - in other words turning a `DOM` event into a business event
     - First off, import `Output` - this is the `@Output()` decorator - and `EventListener`  from `@angular/core`
@@ -14,6 +20,9 @@ Outputs all us to emit events from our components. The big idea of Angular 2 dat
     - replace it with emitting an event
       - `this.added.emit({ product: this.product });
   - Also - the entries are asynchronous. Update the template to display a loading message while a cart entry is being updated
+
+### Listening to events in smart components
+
 - In our `ProductPage`, we want to react to items being added to the cart
   - Why not in the `Product`?
     - As it's not a smart component, it shouldn't know about stores

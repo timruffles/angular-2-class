@@ -2,13 +2,15 @@
 
 ## How-to
 
-All TypeScript work should be written in app/typescript-exercise.
+All TypeScript work should be written in `/app/typescript-exercise`.
 
 Run `npm run exercise` to start an interactive session. Each change you make to a TypeScript file will recompile your code and run the `exercise` module.
 
 Write lots of `console.log()`s messages to yourself to test your understanding.
 
 ## Steps
+
+### Experiment with vars
 
 1. typescript-vars 
 	1. in: app/typescript-exercises/exercise.ts
@@ -19,11 +21,19 @@ Write lots of `console.log()`s messages to yourself to test your understanding.
 	1. define some functions with:
 		1. typed params
 		1. typed return types
+
+
+### Understand importing and exporting
+
 1. import-export
 	1. in: exercises/typescript.ts and exercise/module.ts
 	1. import `Greeter` from module - what compiler errors do you get?
 	1. define a `Greeter` class in module.ts
 	1. try out a few more import/exports
+
+
+### Defining classes
+
 1. classes
 	1. in: exercises/typescript.ts and exercise/module.ts
 	1. in module.ts, define a Header class, with 2 public properties

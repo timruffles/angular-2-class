@@ -9,10 +9,15 @@
 <h2 id="steps">Steps</h2>
 <ol>
 <li>use this (<a href="https://angular.io/docs/ts/latest/cheatsheet.html">cheatsheet</a>) for reference - there&#39;s lots of syntax!</li>
-<li>let&#39;s use our updated product with an example product structure<ol>
+</ol>
+<h3 id="passing-in-data">Passing in data</h3>
+<p>We&#39;re going to pass data to our <code>Product</code> component.</p>
+<ol>
 <li>we need to get a product to pass to our component<ol>
-<li>in <code>App</code>, import <code>staticProductList</code> from <code>./fixtures</code></li>
+<li>in <code>App</code>, import <code>staticProductList</code> from <code>./fixtures</code><ol>
 <li>assign it a property of app</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>we want to pass a product to our <code>Product</code> component<ol>
@@ -26,8 +31,9 @@
 </ol>
 </li>
 </ol>
-</li>
-<li>we need to tell Angular our <code>Product</code> component accepts a product input<ol>
+<h3 id="accepting-data-via-input-">Accepting data via <code>@Input()</code></h3>
+<ol>
+<li>we need to tell Angular our <code>Product</code> component accepts a product input</li>
 <li>we need to tell the component it accepts a product via it&#39;s <code>product=</code> attribute<ol>
 <li>import the <code>@Input()</code> decorator</li>
 <li>use the <code>@Input()</code> annotation to accept a single <code>product</code> as an attribute</li>
@@ -42,13 +48,14 @@
 <li>update the template to take in description and title from the <code>product</code></li>
 </ol>
 </li>
-</ol>
-</li>
 <li>let&#39;s use our new data-driven component to stamp 3 products!<ol>
 <li>import the product array from <code>./fixtures</code></li>
 <li>create 3 <code>&lt;product&gt;</code> components, and pass one product to each</li>
 </ol>
 </li>
+</ol>
+<h3 id="-ngonchanges-hook"><code>ngOnChanges()</code> hook</h3>
+<ol>
 <li>[EXTRA CREDIT] define a <code>ngOnChanges(ch) { console.log(ch) }</code> method in <code>Product</code><ol>
 <li>what is logged?</li>
 <li>how could this be useful?</li>

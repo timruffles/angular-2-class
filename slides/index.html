@@ -490,6 +490,118 @@ System.config({
 </code></pre>
 </section>
 
+<section data-state='title' class=" title"><h2 id="component-tree">Component Tree</h2>
+</section>
+
+<section  class=""><h2 id="apps-self-describing-tree-of-components">Apps = self-describing tree of components</h2>
+</section>
+
+<section  class=""><h2 id="self-describing-">Self-describing...</h2>
+<ul>
+<li>meta-data</li>
+<li>can render itself</li>
+<li>has own injector</li>
+<li>defined public-API</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="-tree">...tree</h2>
+<ul>
+<li>hierarchical</li>
+<li>smart components configure &#39;dumb&#39; rendering components</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="tree">Tree</h2>
+<p><img src="img/component-tree.png" alt="component"></p>
+</section>
+
+<section  class=""><h2 id="child-components">Child components</h2>
+<pre><code class="lang-typescript">import { Component } from &#39;@angular/core&#39;;
+import { HelloComponent } from &#39;./HelloComponent&#39;;
+
+@Component({
+  // this is where we list additional directives
+  directives: [HelloComponent],
+  template: &#39;&lt;hello-angular&gt;&lt;/hello-angular&gt;&#39;,
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="components-need-to-be-defined-to-be-used-in-template">Components need to be defined to be used in template</h2>
+</section>
+
+<section  class=""><h2 id="why-">Why?</h2>
+</section>
+
+<section  class=""><h2 id="keeps-components-statically-analysable">Keeps components statically analysable</h2>
+<pre><code class="lang-html">import { Component } from &#39;@angular/core&#39;;
+import { HelloComponent } from &#39;./HelloComponent&#39;;
+
+
+@Component({
+  // this is where we list additional directives
+  directives: [HelloComponent],
+  template: &#39;&lt;hello-angular&gt;&lt;/hello-angular&gt;&#39;,
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="contrast">Contrast</h2>
+<ul>
+<li>directives per component</li>
+<li>injector: flows down components</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="any-exceptions-">Any exceptions?</h2>
+</section>
+
+<section  class=""><h2 id="-platform_directives-"><code>PLATFORM_DIRECTIVES</code>!</h2>
+<ul>
+<li>would get old including them all the time!</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>component-tree
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="data-driven-components">Data-driven components</h2>
+</section>
+
+<section  class=""><h2 id="goal">Goal</h2>
+<ul>
+<li>get data into our component!</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="data-in">Data in</h2>
+<pre><code class="lang-html">&lt;product
+  [product]=&quot;product&quot;
+  ...
+  &gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="data-in">Data in</h2>
+<pre><code class="lang-typescript">import { Input } from &quot;@angular/core&quot;;
+
+@Component({ /<em> ... </em>/ })
+class DataControl {
+  @Input() public categories: string[];
+
+  ngOnChanges(changes) {
+    // fired when input changes
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>inputs
+</code></pre></section>
+
 <section data-state='title' class=" title"><h2 id="platform-directives">Platform directives</h2>
 </section>
 
@@ -635,119 +747,7 @@ System.config({
 </section>
 
 <section  class=""><h2 id="exercise">Exercise</h2>
-<pre><code>build-in-directives
-</code></pre></section>
-
-<section data-state='title' class=" title"><h2 id="component-tree">Component Tree</h2>
-</section>
-
-<section  class=""><h2 id="apps-self-describing-tree-of-components">Apps = self-describing tree of components</h2>
-</section>
-
-<section  class=""><h2 id="self-describing-">Self-describing...</h2>
-<ul>
-<li>meta-data</li>
-<li>can render itself</li>
-<li>has own injector</li>
-<li>defined public-API</li>
-</ul>
-</section>
-
-<section  class=""><h2 id="-tree">...tree</h2>
-<ul>
-<li>hierarchical</li>
-<li>smart components configure &#39;dumb&#39; rendering components</li>
-</ul>
-</section>
-
-<section  class=""><h2 id="tree">Tree</h2>
-<p><img src="img/component-tree.png" alt="component"></p>
-</section>
-
-<section  class=""><h2 id="child-components">Child components</h2>
-<pre><code class="lang-typescript">import { Component } from &#39;@angular/core&#39;;
-import { HelloComponent } from &#39;./HelloComponent&#39;;
-
-@Component({
-  // this is where we list additional directives
-  directives: [HelloComponent],
-  template: &#39;&lt;hello-angular&gt;&lt;/hello-angular&gt;&#39;,
-})
-</code></pre>
-</section>
-
-<section  class=""><h2 id="components-need-to-be-defined-to-be-used-in-template">Components need to be defined to be used in template</h2>
-</section>
-
-<section  class=""><h2 id="why-">Why?</h2>
-</section>
-
-<section  class=""><h2 id="keeps-components-statically-analysable">Keeps components statically analysable</h2>
-<pre><code class="lang-html">import { Component } from &#39;@angular/core&#39;;
-import { HelloComponent } from &#39;./HelloComponent&#39;;
-
-
-@Component({
-  // this is where we list additional directives
-  directives: [HelloComponent],
-  template: &#39;&lt;hello-angular&gt;&lt;/hello-angular&gt;&#39;,
-})
-</code></pre>
-</section>
-
-<section  class=""><h2 id="contrast">Contrast</h2>
-<ul>
-<li>directives per component</li>
-<li>injector: flows down components</li>
-</ul>
-</section>
-
-<section  class=""><h2 id="any-exceptions-">Any exceptions?</h2>
-</section>
-
-<section  class=""><h2 id="-platform_directives-"><code>PLATFORM_DIRECTIVES</code>!</h2>
-<ul>
-<li>would get old including them all the time!</li>
-</ul>
-</section>
-
-<section  class=""><h2 id="exercise">Exercise</h2>
-<pre><code>component-tree
-</code></pre></section>
-
-<section data-state='title' class=" title"><h2 id="data-driven-components">Data-driven components</h2>
-</section>
-
-<section  class=""><h2 id="goal">Goal</h2>
-<ul>
-<li>get data into our component!</li>
-</ul>
-</section>
-
-<section  class=""><h2 id="data-in">Data in</h2>
-<pre><code class="lang-html">&lt;product
-  [product]=&quot;product&quot;
-  ...
-  &gt;
-</code></pre>
-</section>
-
-<section  class=""><h2 id="data-in">Data in</h2>
-<pre><code class="lang-typescript">import { Input } from &quot;@angular/core&quot;;
-
-@Component({ /<em> ... </em>/ })
-class DataControl {
-  @Input() public categories: string[];
-
-  ngOnChanges(changes) {
-    // fired when input changes
-  }
-}
-</code></pre>
-</section>
-
-<section  class=""><h2 id="exercise">Exercise</h2>
-<pre><code>inputs
+<pre><code>built-in-directives
 </code></pre></section>
 
 <section data-state='title' class=" title"><h2 id="stores">Stores</h2>

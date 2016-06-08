@@ -1,0 +1,50 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="components">Components</h1>
+<p>Write code in <code>app/app</code>.</p>
+<p>Run <code>npm start</code> to:</p>
+<ol>
+<li>compile your code in <code>/app/app</code> on change</li>
+<li>open a browser to a live-reloading page</li>
+<li>if you don&#39;t see what you expect, right click and click &#39;Inspect&#39;. Then open the console tab</li>
+</ol>
+<p>The below is intended to be a chance to use what you&#39;ve learned, not a puzzle. If it&#39;s not clear what to do, ask me!</p>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>we want to make a component that&#39;ll list our products</li>
+<li>define a new component called <code>Product</code> in <code>/app/app/Product.component.ts</code>, which binds to <code>&lt;product&gt;</code> elements<ol>
+<li>add in an <code>&lt;h2&gt;</code> in its <code>template:</code>, and title it &quot;Cape Wax&quot; (or your own super-hero product)&quot;</li>
+</ol>
+</li>
+</ol>
+<h3 id="importing-and-using-a-component-inside-another-component">Importing and using a component inside another component</h3>
+<ol>
+<li>add a <code>&lt;product&gt;</code> tag into the template of <code>App</code><ol>
+<li>what happens? Think about why</li>
+<li>we need to inform Angular we&#39;re using a custom component.</li>
+</ol>
+</li>
+<li>import <code>Product</code> into <code>App</code><ol>
+<li>will the component know about Product yet?</li>
+<li>it won&#39;t - we need to explicitly tell it about our component.<ol>
+<li>in the @Component decorator, add a <code>directives:</code> property and set its value to an array containing <code>Product</code> </li>
+</ol>
+</li>
+</ol>
+</li>
+<li>you should now see your <code>Product</code> component</li>
+</ol>
+<h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://angular.io/docs/ts/latest/cheatsheet.html">cheatsheet</a></li>
+</ul>
+<h2 id="goal">Goal</h2>
+<p><img src="component-tree.png" alt="goal"></p>
+
+    </body>
+  
