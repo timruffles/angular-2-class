@@ -31,7 +31,7 @@
   // Add package entries for angular packages
   ngPackageNames.forEach(function(pkgName) {
     packages['@angular/'+pkgName] = {
-      main: pkgName + '.umd.js',
+      main: '/bundles/' + pkgName + '.umd.js',
       defaultExtension: 'js',
     };
   });
