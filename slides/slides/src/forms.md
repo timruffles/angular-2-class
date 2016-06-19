@@ -22,7 +22,7 @@
       (ngSubmit)="submitted(checkoutForm)"
       >
   <input name=cardNumber
-         ngControl=cardNumber
+         ngModel
          required
          #number='ngForm'
          >
@@ -48,7 +48,7 @@ this.loginForm = builder.group({
 
 ```html
 <input name="superName"
-       ngControl="superName"
+       ngModel
        required
        >
 ```
@@ -61,16 +61,17 @@ this.loginForm = builder.group({
        >
 ```
 
-## `ngControl`
+## `ngModel`
 
 ```html
 <input ...
-       ngControl="superName"
+       name=superName
+       ngModel
        >
 ```
 
 ```typescript
-form.superName // this is the ngControl instance
+form.superName // this is the ngModel instance
 ```
 
 ## Validators
@@ -86,7 +87,8 @@ form.superName // this is the ngControl instance
 
 ## Using validators
 
-- we reference `ngControl` via... `ngForm`?!
+- we reference `ngModel` via... `ngForm`?!
+- bug - hopefully fixed in RC3
 
 ```html
 <input ...
@@ -98,7 +100,7 @@ form.superName // this is the ngControl instance
 </span>
 ```
 
-## `NgControl`
+## `NgModel`
 
 - `.errors`  = object with keys as error name, boolean if present
 - `.valid`   = is valid
@@ -107,7 +109,7 @@ form.superName // this is the ngControl instance
 
 ## `NgForm`
 
-- `.controls` = all the controls, with the `ngControl=someName` as name
+- `.controls` = all the controls, with the `ngModel=someName` as name
 - `.valid`
 - `.pristine`
 

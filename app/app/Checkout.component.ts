@@ -22,6 +22,10 @@ export class Checkout {
   checkout: checkoutState;
   transaction: { successful?: boolean, pending?: boolean };
 
+  initial = {
+    captcha: true,
+  };
+
   constructor(public cart: Cart, private payment: Payment) {
     this.cart.checkoutState()
       .then(state => this.checkout = state)

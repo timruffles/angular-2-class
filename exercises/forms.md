@@ -19,8 +19,9 @@ We want to accept payment using Angular's form system.
   1. I've written the HTML for you as HTML is not what we're here to learn
   1. It's your job to wire it up with Angular
 1. We want to ensure the data we create is valid
-  1. Ensure all the fields are required
+  1. Ensure all the fields are required - apart from the captcha
   1. Disable the checkout button until the form is valid
+1. Initial values need you to pass a value to `[ngModel]`
 
 ### Displaying errors
 

@@ -9,7 +9,7 @@
         <input type="text" 
                placeholder="e.g Superman"
                name="superName"
-               ngControl="superName"
+               ngModel
                required
                >
       </label>
@@ -20,8 +20,18 @@
         <input type="text"
                placeholder="e.g Clark Kent"
                name="realName"
-               ngControl="realName"
+               ngModel
                required
+               >
+      </label>
+    </div>
+
+    <div class="large-4 columns">
+      <label
+        >Are you a robot?
+        <input type="checkbox"
+               name="captcha"
+               [ngModel]="initial.captcha"
                >
       </label>
     </div>
@@ -35,7 +45,7 @@
         <input type="text"
                placeholder="e.g 4444 4444 4444 4444" 
                name=cardNumber
-               ngControl=cardNumber
+               ngModel
                required
                pattern='(([\s\-]*\d[\s\-]*){4}){4}'
                #number='ngForm'
