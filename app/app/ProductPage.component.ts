@@ -7,6 +7,8 @@ import { product } from "./types";
 
 import { ProductStore } from "./ProductStore";
 
+import { RouteSegment } from "@angular/router";
+
 @Component({
   selector: "product-page",
   directives: [Product],
@@ -19,15 +21,14 @@ export class ProductPage {
   product: product;
 
   constructor(
-    private store: ProductStore
+    private store: ProductStore,
+    private segment: RouteSegment
   ) {
   }
 
   ngOnInit() {
-  }
-
-  ngOnChanges() {
-    this.store.get(parseInt(this.productId))
+    const productId = parseInt(this.segment.getParam("id"));
+    this.store.get(productId)
       .then(product => {
         // assign the products
         this.product = product;
@@ -35,6 +36,9 @@ export class ProductPage {
       .catch((err) => {
         console.error("error loading products", err);
       })
+  }
+
+  ngOnChanges() {
   }
 }
 

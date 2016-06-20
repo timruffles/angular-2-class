@@ -5,6 +5,7 @@ import { staticProductList } from "./fixtures";
 
 import { product } from "./types";
 import { ProductStore } from "./ProductStore";
+import { ProductPage } from "./ProductPage.component";
 
 import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } 
   from "@angular/router";
@@ -12,6 +13,8 @@ import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES }
 @Routes([
   { path: "/",
     component: ProductList },
+  { path: "/products/:id",
+    component: ProductPage },
 ])
 @Component({
   directives: [ProductList, ROUTER_DIRECTIVES],
