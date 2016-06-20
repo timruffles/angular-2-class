@@ -6,13 +6,16 @@ import { staticProductList } from "./fixtures";
 import { product } from "./types";
 import { ProductStore } from "./ProductStore";
 import { ProductPage } from "./ProductPage.component";
+import { HomePage } from "./HomePage.component";
 
 import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } 
   from "@angular/router";
 
+import { }  from "rxjs/add/";
+
 @Routes([
   { path: "/",
-    component: ProductList },
+    component: HomePage },
   { path: "/products/:id",
     component: ProductPage },
 ])
@@ -23,7 +26,7 @@ import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES }
     ProductStore
   ],
   template: `
-    <h1 [title]=message>{{ message }}</h1>
+    <h1 [title]='message'>{{ message }}</h1>
     <router-outlet></router-outlet>
   `,
   selector: "app",

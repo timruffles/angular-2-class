@@ -13,7 +13,7 @@
 
   var packages = {
     'app': { main: 'main.js',  defaultExtension: 'js' },
-    'rxjs': { defaultExtension: 'js' },
+    'rxjs': { main: '/bundles/Rx.umd.min.js', defaultExtension: 'js' },
   };
 
   var ngPackageNames = [

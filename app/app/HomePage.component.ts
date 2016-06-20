@@ -1,8 +1,10 @@
 import { Component, ViewChild, ElementRef } from "@angular/core";
 import { QuickFind } from "./QuickFind.component";
 import { Observable } from "rxjs";
+import { ProductStore } from "./ProductStore";
 
 @Component({
+  selector: "home-page",
   directives: [QuickFind],
   template: `
     <quick-find [products]=products
@@ -13,7 +15,7 @@ import { Observable } from "rxjs";
 })
 export class HomePage {
 
-  @ViewChild('search') search: ElementRef; 
+  @ViewChild(QuickFind) search: QuickFind; 
 
   constructor(
     private store: ProductStore
@@ -21,7 +23,8 @@ export class HomePage {
   }
 
   ngAfterViewInit() {
-    Observable.fromEvent(this.search, "search")
+    this.search
+      .searchChanges
       .subscribe(e => {
         console.log(e);
       })

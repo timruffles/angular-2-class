@@ -10,7 +10,9 @@ export type search = {
 };
 
 @Component({
+  selector: "quick-find",
   providers: [],
+  directives: [],
   styles: [
     `
       a {
@@ -28,32 +30,32 @@ export type search = {
         name=category
         ngModel
         >
-        <option *ngFor='#category in categories'
-                [ngValue]=category>
-          {{ category }}
+        <option *ngFor='let category of categories'
+                [ngValue]='category.id'>
+          {{ category.name }}
         </option>
       </select>
     </form>
 
-    <a *ngFor='#product of products'>
+    <a *ngFor='let product of products'>
       {{ product.title }}
     </a>
   `,
 })
 export class QuickFind {
   @Input() products: product[];
-  @Input() categories: string[];
   @Output() search = new EventEmitter();
+  @Input() categories: string[];
 
   searchChanges: Observable<search>;
-
   @ViewChild(NgForm) form: NgForm; 
 
   ngAfterViewInit() {
-    this.searchChanges = this.form.controls.search.valueChanges
-      .combineLatest(this.form.controls.category.valueChanges)
-      .map(([search, category]) => {
-        return { search, category };
-      })
+    this.searchChanges = this.form.form.valueChanges;
+
+    this.form.form.valueChanges
+      .subscribe((ch) => {
+        this.search.emit(ch);
+      });
   }
 }
