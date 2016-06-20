@@ -8,6 +8,7 @@
     "tsc:exercise": "tsc --watch -p typescript-exercises",
     "backend": "node server/index.js",
     "live": "browser-sync start -c bs-config.js",
+    "resetApp": "bash -c -O extglob 'rm app/!(types.ts|fixtures.ts)'",
     "start": "concurrently \"npm run tsc:w\" \"npm run live\" \"npm run backend\"",
     "exercise": "concurrently \"npm run tsc:exercise\" \"nodemon --ext ts -w typescript-exercises typescript-exercises/exercise.js\"",
     "typings": "typings"
