@@ -12,8 +12,6 @@ import { API_URL } from "./types";
 
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 
-
-
 bootstrap(App, [
   disableDeprecatedForms(),
   provideForms(),

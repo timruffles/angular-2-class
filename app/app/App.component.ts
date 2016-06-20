@@ -12,6 +12,7 @@ import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES }
   from "@angular/router";
 
 import { FlashSales } from "./FlashSales.component";
+import { Unless } from "./Unless.directive";
 
 @Routes([
   { path: "/",
@@ -22,7 +23,7 @@ import { FlashSales } from "./FlashSales.component";
     component: FlashSales },
 ])
 @Component({
-  directives: [ProductList, ROUTER_DIRECTIVES],
+  directives: [ProductList, ROUTER_DIRECTIVES, Unless],
   providers: [
     ROUTER_PROVIDERS,
     ProductStore
@@ -30,13 +31,22 @@ import { FlashSales } from "./FlashSales.component";
   template: `
     <h1 [title]='message'>{{ message }}</h1>
     <router-outlet></router-outlet>
+
+    <h2 *unless=foo>
+      I BE HERE
+    </h2>
+
   `,
   selector: "app",
 })
 export class App {
   message: string = "Superhero shop";
+  foo = false;
 
   constructor(router: Router) {
+    setTimeout(() => {
+      this.foo = true;
+    }, 1350)
   }
 }
 
