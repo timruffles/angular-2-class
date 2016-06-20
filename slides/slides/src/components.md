@@ -98,7 +98,7 @@ bootstrap(AppComponent);
 ## Let's have a go
 {exercise: 1}
 
-    app
+    hello-angular
 
 
 ## Template superpowers
