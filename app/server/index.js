@@ -13,9 +13,13 @@ const app = express();
 
 module.exports = exports = app;
 
+const search = require("./search");
+
 app.use(json());
 app.use(cors());
 app.use(morgan("short"));
+
+app.use(search);
 
 app.post("/test/checkout/success", (req, res) => {
   setTimeout(() => {
