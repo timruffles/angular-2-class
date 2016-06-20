@@ -293,11 +293,15 @@ bootstrap(AppComponent);
 <section  class=""><h2 id="styling">Styling</h2>
 <pre><code class="lang-javascript">@Component({
   styles: [
-    <code>a {
+    `
+      a {
         color: red;
-      }</code>
+      }
+    `
   ],
-  template: <code>&amp;lt;a&amp;gt;Hi&amp;lt;/a&amp;gt;</code>
+  template: `
+    &lt;a&gt;Hi&lt;/a&gt;
+  `
 })
 </code></pre>
 </section>

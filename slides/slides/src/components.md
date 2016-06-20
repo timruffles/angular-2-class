@@ -154,15 +154,15 @@ bootstrap(AppComponent);
 ```javascript
 @Component({
   styles: [
-    `
+    \`
       a {
         color: red;
       }
-    `
+    \`
   ],
-  template: `
+  template: \`
     <a>Hi</a>
-  `
+  \`
 })
 ```
 
