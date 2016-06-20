@@ -11,13 +11,15 @@ import { HomePage } from "./HomePage.component";
 import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } 
   from "@angular/router";
 
-import { }  from "rxjs/add/";
+import { FlashSales } from "./FlashSales.component";
 
 @Routes([
   { path: "/",
     component: HomePage },
   { path: "/products/:id",
     component: ProductPage },
+  { path: "/flash-sales",
+    component: FlashSales },
 ])
 @Component({
   directives: [ProductList, ROUTER_DIRECTIVES],
