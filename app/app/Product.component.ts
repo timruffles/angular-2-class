@@ -14,6 +14,13 @@ import { product } from "./types";
   `,
   styles: [
     `
+      h1 {
+        width: 200px;
+        height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       button {
         transition: all 5s;
       }

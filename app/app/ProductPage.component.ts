@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 
-import { ProductPage } from "./ProductPage.component";
+import { Product } from "./Product.component";
 import { staticProductList } from "./fixtures";
 
 import { product } from "./types";
@@ -8,19 +8,16 @@ import { product } from "./types";
 import { ProductStore } from "./ProductStore";
 
 @Component({
-  selector: "product-list",
-  directives: [ProductPage],
+  selector: "product-page",
+  directives: [Product],
   template: `
-    <product-page 
-      *ngFor="let product of products"
-      [productId]="product.id"
-      >
-    </product-page>
+    <product [product]=product>
+    </product>
   `,
 })
-export class ProductList {
-  message: string = "Superhero shop";
-  products: product[] = [];
+export class ProductPage {
+  @Input() productId: string;
+  product: product;
 
   constructor(
     private store: ProductStore
@@ -28,16 +25,19 @@ export class ProductList {
   }
 
   ngOnInit() {
+  }
 
-    this.store.all()
-      .then(products => {
+  ngOnChanges() {
+    this.store.get(parseInt(this.productId))
+      .then(product => {
         // assign the products
-        this.products = products;
+        this.product = product;
       })
       .catch((err) => {
         console.error("error loading products", err);
       })
   }
 }
+
 
 

@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Angular 2 example app</title>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/foundation-sites/dist/foundation.min.css">
+    <style>
+      body {
+        padding: 2em;
+      }
+    </style>
+
+
+    <!-- 1. Load libraries -->
+    <script src="node_modules/es6-shim/es6-shim.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app/productDemo')
+        .catch(function(err){ console.error(err); });
+    </script>
+
+  </head>
+  <body>
+    <app>
+      <h3>Loading...</h3>
+      <p>hint: Angular has not managed to bootstrap using a component matching <code>&lt;app&gt;</code>, or perhaps has crashed. Check the console)</p>
+    </app>
+  </body>
+</html>
