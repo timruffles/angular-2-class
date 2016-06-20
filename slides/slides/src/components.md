@@ -46,7 +46,7 @@ import { Component } from '@angular/core';
 {tags:{state:"notitle"}}
 
 ```javascript
-class AppComponent {
+export class AppComponent {
   constructor() { 
     this.message = "Hi there";
   }
@@ -57,7 +57,7 @@ class AppComponent {
 {tags:{state:"notitle"}}
 
 ```javascript
-export { AppComponent };
+export class AppComponent {
 ```
 
 ## All together
@@ -65,13 +65,11 @@ export { AppComponent };
 ```javascript
 import { Component } from '@angular/core';
 
-export { AppComponent };
-
 @Component({
   selector: 'app',
   template: '<h1>{{ message }}</h1>',
 })
-class AppComponent {
+export class AppComponent {
   constructor() { 
     this.message = "Hi there";
   }

@@ -198,7 +198,7 @@
 </section>
 
 <section data-state='notitle' class=""><h2 id="-"> </h2>
-<pre><code class="lang-javascript">class AppComponent {
+<pre><code class="lang-javascript">export class AppComponent {
   constructor() { 
     this.message = &quot;Hi there&quot;;
   }
@@ -207,20 +207,18 @@
 </section>
 
 <section data-state='notitle' class=""><h2 id="-"> </h2>
-<pre><code class="lang-javascript">export { AppComponent };
+<pre><code class="lang-javascript">export class AppComponent {
 </code></pre>
 </section>
 
 <section  class=""><h2 id="all-together">All together</h2>
 <pre><code class="lang-javascript">import { Component } from &#39;@angular/core&#39;;
 
-export { AppComponent };
-
 @Component({
   selector: &#39;app&#39;,
   template: &#39;&lt;h1&gt;{{ message }}&lt;/h1&gt;&#39;,
 })
-class AppComponent {
+export class AppComponent {
   constructor() { 
     this.message = &quot;Hi there&quot;;
   }
