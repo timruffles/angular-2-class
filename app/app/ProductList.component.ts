@@ -2,20 +2,23 @@ import { Component, Input } from "@angular/core";
 
 import { ProductPage } from "./ProductPage.component";
 import { staticProductList } from "./fixtures";
-
 import { product } from "./types";
-
 import { ProductStore } from "./ProductStore";
+
+import { Routes, Router, ROUTER_DIRECTIVES } 
+  from "@angular/router";
 
 @Component({
   selector: "product-list",
-  directives: [ProductPage],
+  directives: [ProductPage, ROUTER_DIRECTIVES],
+  styles: [`a { display: block }`],
   template: `
-    <product-page 
+    <a
       *ngFor="let product of products"
-      [productId]="product.id"
+      [routerLink]="['/products',product.id]"
       >
-    </product-page>
+      {{ product.name }}
+    </a>
   `,
 })
 export class ProductList {

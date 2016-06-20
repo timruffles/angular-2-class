@@ -16,7 +16,6 @@ import { ProductStore } from "./ProductStore";
   `,
 })
 export class ProductPage {
-  @Input() productId: string;
   product: product;
 
   constructor(
