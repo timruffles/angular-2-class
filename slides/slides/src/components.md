@@ -6,9 +6,9 @@
 ## Goal
 
 ```html
-<hello-angular>
+<app>
   <h1>Hi there</h1>
-</hello-angular>
+</app>
 ```
 
 ## Bit by bit
@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
 ```javascript
 @Component({
   // any CSS selector
-  selector: 'hello-angular',
+  selector: 'app',
   // ...
 })
 ```
@@ -46,7 +46,7 @@ import { Component } from '@angular/core';
 {tags:{state:"notitle"}}
 
 ```javascript
-class HelloComponent {
+class AppComponent {
   constructor() { 
     this.message = "Hi there";
   }
@@ -57,7 +57,7 @@ class HelloComponent {
 {tags:{state:"notitle"}}
 
 ```javascript
-export { HelloComponent };
+export { AppComponent };
 ```
 
 ## All together
@@ -65,13 +65,13 @@ export { HelloComponent };
 ```javascript
 import { Component } from '@angular/core';
 
-export { HelloComponent };
+export { AppComponent };
 
 @Component({
-  selector: 'hello-angular',
+  selector: 'app',
   template: '<h1>{{ message }}</h1>',
 })
-class HelloComponent {
+class AppComponent {
   constructor() { 
     this.message = "Hi there";
   }
@@ -81,17 +81,17 @@ class HelloComponent {
 ## Complete app!
 
 ```javascript
-import { HelloComponent } from "./HelloComponent";
+import { AppComponent } from "./AppComponent";
 import { bootstrap } from "@angular/platform-browser-dynamic";
 
-bootstrap(HelloComponent);
+bootstrap(AppComponent);
 ```
 
 
 ```javascript
 <!DOCTYPE html>
 
-<hello-angular></hello-angular>
+<app></app>
 
 <!-- bundled up: app + dependencies -->
 <script src="dist/app.js"></script>
@@ -100,7 +100,7 @@ bootstrap(HelloComponent);
 ## Let's have a go
 {exercise: 1}
 
-    hello-angular
+    app
 
 
 ## Template superpowers
@@ -123,6 +123,24 @@ bootstrap(HelloComponent);
 <form (submit)="create($event)">
 ```
 
+## Styling
+
+- watch out: CSS is escaped
+
+```html
+<a [style.size.em]='mySize'>
+  Link
+</a>
+```
+
+## Toggling classes
+
+```html
+<a [class.active]='isActive(link.id)'>
+  {{ link.text }}
+</a>
+```
+
 ## Local variables
 
 - access nodes in template
@@ -132,6 +150,24 @@ bootstrap(HelloComponent);
   <button (click)="movieplayer.play()">
 </video>
 ```
+
+## Styling
+
+```javascript
+@Component({
+  styles: [
+    `
+      a {
+        color: red;
+      }
+    `
+  ],
+  template: `
+    <a>Hi</a>
+  `
+})
+```
+
 
 ## Let's have a go
 {exercise: 1}
