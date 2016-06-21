@@ -1,0 +1,38 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="attribute-directives">Attribute directives</h1>
+<h2 id="steps">Steps</h2>
+<p>We&#39;ll use the predefined styling in <code>style.css</code> around <code>[powerButton]</code> - you just need to hook in the correct <code>.animating</code> class on the button!</p>
+<h3 id="create-directive">Create directive</h3>
+<p>You can work on the power button on any page in the app you find convenient. Once you&#39;re done, think about where it makes sense to use (hint: everywhere!).</p>
+<ol>
+<li>Create a <code>PowerButton.directive.ts</code><ol>
+<li>import decorator</li>
+</ol>
+</li>
+<li>select any DOM elements with our directive attribute<ol>
+<li>you can be specific and select only buttons if you like</li>
+</ol>
+</li>
+<li>listen to clicks, to toggle the animation class<ol>
+<li>use the <code>host:</code> bindings, with normal template syntax</li>
+<li>so <code>(eventName)</code> for an event</li>
+<li>and <code>[class.xyz]</code> to toggle a class</li>
+</ol>
+</li>
+<li>Use the button in our app<ol>
+<li>Ensure it&#39;s imported and in the directives array</li>
+</ol>
+</li>
+</ol>
+<h3 id="goal">Goal</h3>
+<video src='attribute-directives.mp4' autoplay muted loop>
+</video>
+
+    </body>
+  
