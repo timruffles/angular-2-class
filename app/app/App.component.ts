@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, provide } from "@angular/core";
 
 import { ProductList } from "./ProductList.component";
 import { staticProductList } from "./fixtures";
@@ -13,6 +13,7 @@ import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES }
   from "@angular/router";
 
 import { Checkout } from "./Checkout.component";
+import { Payment } from "./Payment";
 
 @Routes([
   { path: "/",
@@ -25,7 +26,10 @@ import { Checkout } from "./Checkout.component";
 @Component({
   directives: [ProductList, ROUTER_DIRECTIVES],
   providers: [
-    ClientStorage, Cart,
+    Payment,
+    { provide: ClientStorage, 
+      useClass: ClientStorage} ,
+    provide(Cart, { useClass: Cart }),
     ROUTER_PROVIDERS,
     ProductStore
   ],

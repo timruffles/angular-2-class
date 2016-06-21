@@ -22,7 +22,7 @@
         <input type="text"
                placeholder="e.g Clark Kent"
                name="realName"
-               ngModel
+               [ngModel]="initial.realName"
                required
                #realName="ngForm"
                >
@@ -76,9 +76,22 @@
     </div>
   </div>
 
-  <div class="alert-box success"
+  <div *ngIf="transaction.state === 'loading'"
+       class="callout"
+       >
+    Checking your order
+  </div>
+
+  <div *ngIf="transaction.state === 'success'"
+       class="callout success"
        >
     Your order was accepted and is being processed!
+  </div>
+
+  <div class="callout warning"
+       *ngIf="transaction.state === 'error'"
+       >
+     Bad news I'm afraid
   </div>
 
 </form>
