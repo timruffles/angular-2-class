@@ -6,6 +6,8 @@ import { staticProductList } from "./fixtures";
 import { product } from "./types";
 import { ProductStore } from "./ProductStore";
 import { ProductPage } from "./ProductPage.component";
+import { Cart } from "./Cart";
+import { ClientStorage } from "./ClientStorage";
 
 import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } 
   from "@angular/router";
@@ -19,11 +21,14 @@ import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES }
 @Component({
   directives: [ProductList, ROUTER_DIRECTIVES],
   providers: [
+    ClientStorage, Cart,
     ROUTER_PROVIDERS,
     ProductStore
   ],
   template: `
-    <h1 [title]=message>{{ message }}</h1>
+    <h1 [title]=message
+        [class.something]="someexpress" 
+      >{{ message }}</h1>
     <router-outlet></router-outlet>
   `,
   selector: "app",

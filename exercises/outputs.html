@@ -20,7 +20,7 @@
 <ul>
 <li>Our <code>Product</code> component needs to react to people clicking on <code>Add to cart</code><ul>
 <li>This is our first <code>Output</code>. We want to emit a high-level event each time someone clicks - in other words turning a <code>DOM</code> event into a business event<ul>
-<li>First off, import <code>Output</code> - this is the <code>@Output()</code> decorator - and <code>EventListener</code>  from <code>@angular/core</code></li>
+<li>First off, import <code>Output</code> - this is the <code>@Output()</code> decorator - and <code>EventEmitter</code>  from <code>@angular/core</code></li>
 <li>next remove all the business logic from our component</li>
 <li>replace it with emitting an event<ul>
 <li>`this.added.emit({ product: this.product });</li>
