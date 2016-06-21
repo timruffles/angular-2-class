@@ -1,23 +1,14 @@
-/**
- * <tab-progression>
- *   <tab>
- *   </tab>
- *   <tab [attr.selectable]='next'>
- *   </tab>
- * </tab-pgoression>
- */
-
 import { NgZone, Input, TemplateRef, ViewChild, ViewContainerRef, QueryList, Component, ContentChildren } from "@angular/core";
 import { Tab } from "./Tab.directive";
 
 @Component({
-  selector: "tab-progression",
+  selector: "tabs",
   directives: [],
   template: `
     <active #activeTab></active>
   `,
 })
-export class TabProgression {
+export class Tabs {
   @Input() activeName: string;
   @ContentChildren(Tab, { read: TemplateRef }) tabTemplates: QueryList<TemplateRef<any>>;
   @ContentChildren(Tab) tabs: QueryList<Tab>;
@@ -29,9 +20,7 @@ export class TabProgression {
   }
 
   ngAfterContentInit() {
-  }
-
-  ngAfterViewInit() {
+    this.updateTab();
   }
 
   activeTab(): [number, Tab] {
@@ -52,13 +41,13 @@ export class TabProgression {
 
   ngOnChanges() {
     // wait till we've hit afterViewInit
-    if(!this.tabs) {
-      return;
+    if(this.tabs) {
+      this.updateTab();
     }
+  }
 
+  private updateTab() {
     const [index, active] = this.activeTab();
-    console.log(index, active);
-    
     if(!active) {
       this.clear();
     } else if(this.previouslyRenderedTab !== active) {

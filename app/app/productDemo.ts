@@ -33,11 +33,11 @@ import { CaptionedProduct } from "./CaptionedProduct.component";
       Enable C
     </button>
 
-    <tab-progression [activeName]="activeName">
-      <div *tab="'a'" [enabled]='foo'>one</div>
+    <tabs [activeName]="activeName">
+      <div *tab="'a'">one</div>
       <div *tab="'b'">two</div>
       <div *tab="'c'">three</div>
-    </tab-progression>
+    </tabs>
 
 
     <button powerButton class=button>
