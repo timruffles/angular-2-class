@@ -16,7 +16,8 @@ import {
 export class Tabs {
   @Input() activeName: string;
 
-  @ViewChild('activeRef', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
+  @ViewChild('activeRef', { read: ViewContainerRef }) 
+    viewContainerRef: ViewContainerRef;
 
   // our list of tabs
   @ContentChildren(Tab) tabs: QueryList<Tab>;
