@@ -13,10 +13,15 @@ import { HTTP_PROVIDERS } from "@angular/http";
 import { PowerButton } from "./PowerButton.directive";
 import { PLATFORM_DIRECTIVES  } from "@angular/core";
 
+import { Unless } from "./Unless.directive";
+
 bootstrap(App, [
   { provide: PLATFORM_DIRECTIVES,
     multi: true,
     useValue: PowerButton },
+  { provide: PLATFORM_DIRECTIVES,
+    multi: true,
+    useValue: Unless },
   HTTP_PROVIDERS,
   { provide: API_URL, useValue: "http://localhost:3999" },
   disableDeprecatedForms(),
