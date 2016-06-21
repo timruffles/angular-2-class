@@ -55,6 +55,8 @@ this.loginForm = builder.group({
 
 ## Name
 
+- important: will be bound using this name by default
+
 ```html
 <input name="superName"
        ...
@@ -71,7 +73,7 @@ this.loginForm = builder.group({
 ```
 
 ```typescript
-form.superName // this is the ngModel instance
+form.controls.superName // this is the ngModel instance
 ```
 
 ## Validators
@@ -112,6 +114,7 @@ form.superName // this is the ngModel instance
 - `.controls` = all the controls, with the `ngModel=someName` as name
 - `.valid`
 - `.pristine`
+- `.form` - a `ControlGroup` for whole form - useful API
 
 ## Exercise
 {exercise:1}

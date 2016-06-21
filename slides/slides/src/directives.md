@@ -92,6 +92,9 @@ export class PowerButton {
 
 ## Same syntax, different place
 
+##  
+{notitle:1}
+
 ```typescript
 @Directive({
   host: {
@@ -169,6 +172,19 @@ export class PowerButton {
 - this is where we slot in ng2 view content
 - vs manually modifying the DOM
 
+## Just somewhere to put content
+
+## Can be any element
+
+```typescript
+<div #someDiv>
+</div>
+
+<!-- content ends up as a sibling, not child -->
+```
+
+## Easiest: simply use our directive node
+
 ## `ViewContainerRef` methods
 
 - `vcr.clear()` - clears
@@ -204,7 +220,7 @@ export class Unless {
 ## Input
 
 ```typescript
-import { /* ..., */ Input } from "@angular/core";
+import { /\* ..., \*/ Input } from "@angular/core";
 
 @Directive({
   // ...
@@ -217,7 +233,7 @@ export class Unless {
 ## Inject
 
 ```typescript
-import {  /* ..., */
+import {  /\* ..., \*/
   ViewContainerRef, TemplateRef } 
   from "@angular/core";
 
@@ -235,7 +251,7 @@ export class Unless {
 ## Listen for change
 
 ```typescript
-import { /* ..., */ Input } from "@angular/core";
+import { /\* ..., \*/ Input } from "@angular/core";
 
 @Directive({
   // ...
