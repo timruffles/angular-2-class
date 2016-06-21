@@ -1,7 +1,8 @@
-import { Component, Input, provide } from "@angular/core";
+import { Component, Input, provide, PLATFORM_DIRECTIVES  } from "@angular/core";
 
 import { ProductList } from "./ProductList.component";
 import { staticProductList } from "./fixtures";
+
 
 import { product } from "./types";
 import { ProductStore } from "./ProductStore";
@@ -11,6 +12,7 @@ import { ClientStorage } from "./ClientStorage";
 
 import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } 
   from "@angular/router";
+
 
 import { Checkout } from "./Checkout.component";
 import { Payment } from "./Payment";
@@ -28,7 +30,7 @@ import { Payment } from "./Payment";
   providers: [
     Payment,
     { provide: ClientStorage, 
-      useClass: ClientStorage} ,
+      useClass: ClientStorage},
     provide(Cart, { useClass: Cart }),
     ROUTER_PROVIDERS,
     ProductStore
@@ -38,6 +40,10 @@ import { Payment } from "./Payment";
         [class.something]="someexpress" 
       >{{ message }}</h1>
     <router-outlet></router-outlet>
+
+    <button powerButton class='button'>
+      BOOM!
+    </button>
   `,
   selector: "app",
 })
