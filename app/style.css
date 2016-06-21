@@ -1,0 +1,53 @@
+body {
+  padding: 2em;
+}
+
+tabs {
+  display: block;
+}
+
+.tabs-content {
+  padding: 1rem;
+}
+
+flash-sale-item {
+  display: inline-block;
+  text-align: center;
+  width: 0.5rem;
+  height: 0.5rem;
+  font-size: 0.25rem;
+  background: gold;
+  transition: background 0.25s;
+  margin: 0.125rem;
+  box-sizing: border-box;
+}
+
+flash-sale-item.dropped {
+  background: red;
+}
+
+flash-sale-item.changed {
+  border: 1px solid red;
+}
+
+[powerButton].animating {
+  animation: shake 1s;
+}
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+

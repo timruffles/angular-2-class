@@ -26,7 +26,11 @@ routes.get("/products", function(req, res) {
 
   data = data.slice(page * pageSize, (page + 1) * pageSize);
 
-  res.send(data);
+  const fakeDelay = 250 + Math.random() * 750;
+
+  setTimeout(() => {
+    res.send(data);
+  }, fakeDelay);
 
   function invalid(error) {
     res.sendStatus(400)

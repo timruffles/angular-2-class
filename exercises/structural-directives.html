@@ -1,0 +1,56 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h1 id="structural-directives">Structural directives</h1>
+<h2 id="steps">Steps</h2>
+<h3 id="get-directive-selecting">Get directive selecting</h3>
+<ol>
+<li>Create a <code>Unless.directive.ts</code><ol>
+<li>import <code>Directive</code> decorator</li>
+<li>configure selector to match <code>unless</code> attribute</li>
+</ol>
+</li>
+</ol>
+<h2 id="react-to-input">React to input</h2>
+<ol>
+<li>Configure the <code>unless</code> attribute to take input</li>
+<li>Use the <code>ngOnChanges</code> (or research making the <code>unless</code> property a setter) to react to changes <ol>
+<li>If the <code>unless</code> input is falsy, clear the view container</li>
+<li>Otherwise, create an embedded view with our template</li>
+</ol>
+</li>
+<li>We need to get a reference to the content to be created/destroyed<ol>
+<li>Inject <code>TemplateRef</code></li>
+</ol>
+</li>
+<li>We need to get a reference to place we&#39;ll attach content<ol>
+<li>Inject <code>ViewContainerRef</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="use-it-in-the-app">Use it in the app</h2>
+<ol>
+<li>Use it somewhere in the app<ol>
+<li>Ensure it&#39;s imported, and available in the directives array</li>
+</ol>
+</li>
+<li>If you use it without the structural directive marker, it should crash!</li>
+<li>Otherwise, we should be good to go!</li>
+</ol>
+<h2 id="goal">Goal</h2>
+<p>We want to be able to use <code>*unless</code> as the inverse of <code>*ngIf</code>:</p>
+<pre><code class="lang-html">&lt;div *unless=&#39;someFlag&#39;&gt;
+  I should display if someFlag is falsy!
+&lt;/div&gt;
+
+&lt;div *unless=&#39;!someFlag&#39;&gt;
+  I should display if someFlag is truthy!
+&lt;/div&gt;
+</code></pre>
+
+    </body>
+  

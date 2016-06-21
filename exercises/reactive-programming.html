@@ -7,19 +7,68 @@
     <body>
       <h1 id="reactive-programming">Reactive Programming</h1>
 <p>Angular&#39;s support for RxJS allows us to simplify some tricky async workflows.</p>
-<h2 id="steps">Steps</h2>
-<h3 id="ui-setup-v1-">UI setup (v1)</h3>
+<h2 id="resources">Resources</h2>
 <ul>
-<li>we&#39;ll first make a suggestion widget</li>
-<li>make it loop over the products it receives, and create a thumbnail for each</li>
-<li>we&#39;ll add a button to refresh it</li>
+<li><a href="http://reactivex.io/rxjs/">RxJS 5</a> - MAKE SURE you use this, not RxJS 4, there are breaking changes</li>
+<li><a href="http://rxmarbles.com/#distinctUntilChanged">RxMarbles</a> - nice diagrams for operators</li>
 </ul>
-<h3 id="data-layer-v1-">Data-layer (v1)</h3>
+<h2 id="steps">Steps</h2>
+<h3 id="import-the-reactive-productstore">Import the reactive ProductStore</h3>
 <ul>
-<li>here we want to pull in data from Reddit&#39;s &#39;Shutupandtakemymoney&#39; sub-reddit</li>
-<li>it should transform the results into an array of products</li>
+<li>this will return products from our API</li>
+<li><code>pre-written/ProductStore.ts</code></li>
+<li>move it to app</li>
+<li>read through</li>
+</ul>
+<h3 id="creating-product-search-widget">Creating product search widget</h3>
+<ul>
+<li>we&#39;ll first create a search as you type widget</li>
+<li>I&#39;ve written the boiler plate in <code>pre-written/QuickFind.component</code> - move it to app</li>
+<li>first we want to create an observable as our public API</li>
+<li>expose an observable of the <code>search</code> struct</li>
+<li>now we need to get a reference to our form&#39;s <code>FormGroup</code><ul>
+<li>use a view query to achieve that<ul>
+<li>create a local variable and query for it</li>
+</ul>
+</li>
+<li>weirdly the <code>FormGroup</code> is on the <code>NgForm&#39;s</code> <code>.form</code> property</li>
+</ul>
+</li>
+<li>look up what property is observable from the control group<ul>
+<li><code>.valueChange</code></li>
+<li>expose this as our observable</li>
+</ul>
+</li>
+</ul>
+<h2 id="using-product-search-which">Using product search which</h2>
+<ul>
+<li>We&#39;re going to create a search page</li>
+<li>I&#39;ve written the boiler plate in <code>pre-written/SearchPage.component</code> - move it to app</li>
+<li>using the observable you expose, we want to transform a stream of searches in a stream of result arrays</li>
+<li>the search method on the store will do that for us!</li>
+<li>store returns an observable per search - how can we flatten this into our observable?<ul>
+<li>hint - we need to flatten and transform - flat map</li>
+</ul>
+</li>
+<li>we should see results appear once the requests are made, but theres no initial search. how can we fix that?<ul>
+<li>check the operator docs!</li>
+<li>hint: you want to start the stream with something</li>
+</ul>
+</li>
+<li>if we type fast you&#39;ll notice we end up with a lot of requests<ul>
+<li>let&#39;s wait till the user has finished typing</li>
+</ul>
+</li>
+<li>also - we&#39;re not cancelling the old request<ul>
+<li>what flat-map style operator can we use to unsubscribe from the old observables?</li>
+</ul>
+</li>
+<li>the UX isn&#39;t great - can we add some loading indicators?</li>
 </ul>
 <h2 id="goals">Goals</h2>
+<video src='reactive-programming.mp4' autoplay muted loop
+  style='max-width: 100%; border: 1px solid black'>
+</video>
 
     </body>
   

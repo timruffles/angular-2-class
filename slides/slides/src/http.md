@@ -85,7 +85,8 @@ export class Payment {
          .then((resp) => {
             // response object allows us to control parsing
             // and transform into a different format
-            return { successful: resp.json().ok };
+            const result = resp.json();
+            return { successful: result.ok };
          })
     }
 }
