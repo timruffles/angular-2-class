@@ -12,6 +12,8 @@ import { API_URL } from "./types";
 
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 
+import "rxjs/Rx";
+
 bootstrap(App, [
   disableDeprecatedForms(),
   provideForms(),

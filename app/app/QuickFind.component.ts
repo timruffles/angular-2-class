@@ -23,7 +23,7 @@ export type search = {
   template: `
     <form #searchForm='ngForm'>
       <input type=search
-             name=search
+             name=q
              ngModel
              >
       <select 
@@ -38,7 +38,7 @@ export type search = {
     </form>
 
     <a *ngFor='let product of products'>
-      {{ product.title }}
+      {{ product.name }}
     </a>
   `,
 })
@@ -51,7 +51,8 @@ export class QuickFind {
   @ViewChild(NgForm) form: NgForm; 
 
   ngAfterViewInit() {
-    this.searchChanges = this.form.form.valueChanges;
+    this.searchChanges = this.form.form.valueChanges
+      .asObservable();
 
     this.form.form.valueChanges
       .subscribe((ch) => {

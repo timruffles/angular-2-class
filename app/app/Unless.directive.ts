@@ -14,8 +14,10 @@ export class Unless {
     private view: ViewContainerRef
   ) {}
 
-  @Input() set unless(val: any) {
-    if(val) {
+  @Input() unless: any;
+
+  ngOnChanges() {
+    if(this.unless) {
       this.view.clear();
     } else {
       this.view.createEmbeddedView(this.tpl);

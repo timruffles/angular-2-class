@@ -1,7 +1,8 @@
 import { longerStaticProductList } from "./fixtures";
 import { product, API_URL } from "./types";
 import { Injectable } from "@angular/core";
-import { Http } from "@angular/http";
+import { Http, URLSearchParams } from "@angular/http";
+import { Observable } from "rxjs";
 
 type oneIndexedPage = number;
 
@@ -21,9 +22,14 @@ export class ProductStore {
     return Promise.resolve(this.byId.get(id));
   }
 
-  search(query: { q: string, category: string, page: oneIndexedPage }) {
+  categories(): { name: string, id: string}[] {
+    return [{name: "All", id: ""}, { name: "eBooks", id: "ebooks"}, {name:"Products", id: "products"}]
+  }
+
+  search(query: { q: string, category?: string, page?: oneIndexedPage }): Observable<product[]> {
     const { q = "", category = "", page = 0 } = query;
-    return this.http.get(this.apiUrl + "/products", query)
+    return this.http.get(this.apiUrl + `/products?q=${q}&category=${category}&page=${page}`)
+      .map(resp => resp.json())
   }
 
   all(): Promise<product[]> {
