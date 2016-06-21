@@ -5,6 +5,10 @@ import { bootstrap }
 import { App }
   from "./App.component";
 
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
 
-bootstrap(App);
+bootstrap(App, [
+  disableDeprecatedForms(),
+  provideForms(),
+]);
 

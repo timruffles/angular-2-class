@@ -12,11 +12,15 @@ import { ClientStorage } from "./ClientStorage";
 import { Routes, Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } 
   from "@angular/router";
 
+import { Checkout } from "./Checkout.component";
+
 @Routes([
   { path: "/",
     component: ProductList },
   { path: "/products/:id",
     component: ProductPage },
+  { path: "/checkout",
+    component: Checkout },
 ])
 @Component({
   directives: [ProductList, ROUTER_DIRECTIVES],
