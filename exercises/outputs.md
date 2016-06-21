@@ -15,7 +15,7 @@ Our add to cart button isn't doing much. Let's fix that!
 
 - Our `Product` component needs to react to people clicking on `Add to cart`
   - This is our first `Output`. We want to emit a high-level event each time someone clicks - in other words turning a `DOM` event into a business event
-    - First off, import `Output` - this is the `@Output()` decorator - and `EventListener`  from `@angular/core`
+    - First off, import `Output` - this is the `@Output()` decorator - and `EventEmitter`  from `@angular/core`
     - next remove all the business logic from our component
     - replace it with emitting an event
       - `this.added.emit({ product: this.product });
