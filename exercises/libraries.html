@@ -1,0 +1,53 @@
+
+    <!doctype html>
+    <head>
+      <link rel=stylesheet href="../app/node_modules/foundation-sites/dist/foundation.min.css">
+      <link rel=stylesheet href="./style.css">
+    </head>
+    <body>
+      <h2 id="libararies">Libararies</h2>
+<h2 id="steps">Steps</h2>
+<h2 id="define-a-chart-service">Define a <code>Chart</code> service</h2>
+<ol>
+<li>import d3</li>
+<li>define a <code>render()</code> method, accepting an options object with <code>data</code> and <code>el</code><ol>
+<li>write some d3 code to simply draw a circle per data item</li>
+</ol>
+</li>
+</ol>
+<h2 id="define-a-chart-component">Define a <code>Chart</code> component</h2>
+<ol>
+<li>import the <code>Chart</code> service</li>
+<li>make its template a single svg node</li>
+<li>use <code>ElementRef</code> to get a reference to the root node</li>
+<li>call <code>render()</code> and ensure we see some data<ol>
+<li><code>data:</code> as with some dummy data (e.g [1,2,3])</li>
+<li><code>el:</code> as our elementRef, <code>.nativeElement.querySelector(&quot;svg&quot;)</code></li>
+</ol>
+</li>
+<li>define an <code>@Input()</code> to accept our <code>data</code> once we&#39;ve loaded it</li>
+<li>replace your stubbed call with a call inside an <code>ngOnChanges</code> callback, passing in our <code>data</code> input</li>
+<li>now, once we change <code>.data</code>, we should see a rendered chart!</li>
+</ol>
+<h2 id="pass-data-into-chart-">Pass data into <code>Chart</code></h2>
+<ol>
+<li>import <code>Chart</code> into <code>App</code></li>
+<li>place it in the template</li>
+<li>let&#39;s test our data input<ol>
+<li>assign a <code>.data</code> property, with stubbed data again</li>
+<li>pass it into the <code>data</code> input of our <code>Chart</code></li>
+<li>ensure our <code>Chart</code> renders correct</li>
+</ol>
+</li>
+<li>let&#39;s pass in real data<ol>
+<li>in the <code>App</code> handler for our Reddit request, reassign the <code>.data</code> property<ol>
+<li>we should see circles appear for each story!</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>let&#39;s create a nice looking chart!</li>
+</ol>
+
+    </body>
+  
