@@ -1139,6 +1139,9 @@ class Product {
 </section>
 
 <section  class=""><h2 id="name">Name</h2>
+<ul>
+<li>important: will be bound using this name by default</li>
+</ul>
 <pre><code class="lang-html">&lt;input name=&quot;superName&quot;
        ...
        &gt;
@@ -1151,7 +1154,7 @@ class Product {
        ngModel
        &gt;
 </code></pre>
-<pre><code class="lang-typescript">form.superName // this is the ngModel instance
+<pre><code class="lang-typescript">form.controls.superName // this is the ngModel instance
 </code></pre>
 </section>
 
@@ -1193,6 +1196,7 @@ class Product {
 <li><code>.controls</code> = all the controls, with the <code>ngModel=someName</code> as name</li>
 <li><code>.valid</code></li>
 <li><code>.pristine</code></li>
+<li><code>.form</code> - a <code>ControlGroup</code> for whole form - useful API</li>
 </ul>
 </section>
 
@@ -1283,7 +1287,8 @@ export class Payment {
          .then((resp) =&gt; {
             // response object allows us to control parsing
             // and transform into a different format
-            return { successful: resp.json().ok };
+            const result = resp.json();
+            return { successful: result.ok };
          })
     }
 }
@@ -1292,6 +1297,787 @@ export class Payment {
 
 <section  class=""><h2 id="exercise">Exercise</h2>
 <pre><code>http
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="directives">Directives</h2>
+</section>
+
+<section  class=""><h2 id="most-general-type-of-component">Most general type of component</h2>
+</section>
+
+<section  class=""><h2 id="all-components-are-directives">All components are directives</h2>
+<pre><code class="lang-sh">   Directive
+      ^
+      |
+   Component
+</code></pre>
+</section>
+
+<section  class=""><h2 id="components">Components</h2>
+<ul>
+<li>are directives with a template!</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="two-types-of-non-component-directive">Two types of non-component directive</h2>
+<ul>
+<li>attribute: modify existing tag or component</li>
+<li>structural: change the DOM layout</li>
+</ul>
+</section>
+
+<section data-state='title' class=" title"><h2 id="attribute-directives">Attribute directives</h2>
+</section>
+
+<section  class=""><h2 id="directives-decorator">Directives decorator</h2>
+</section>
+
+<section  class=""><h2 id="directives-have-a-selector">Directives have a selector</h2>
+<ul>
+<li>often going to be an attribute</li>
+</ul>
+<pre><code class="lang-typescript">import { Directive } from &quot;@angular/core&quot;;
+
+@Directive({
+  // the below is CSS 3 selector for attribute
+  selector: &quot;[powerButton]&quot;
+})
+</code></pre>
+</section>
+
+<section  class=""><h2 id="directives-are-a-class">Directives are a class</h2>
+<pre><code class="lang-typescript">@Directive({
+  // ...
+})
+export class PowerButton {
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="directives-have-life-cycle-hooks">Directives have life-cycle hooks</h2>
+<pre><code class="lang-typescript">import { Directive, DoCheck } from &quot;@angular/core&quot;;
+
+@Directive({
+  // ...
+})
+export class PowerButton 
+  implements DoCheck {
+
+  ngDoCheck() {
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="how-do-we-style-current-element-">How do we style current element?</h2>
+<ul>
+<li>we have no template!</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="-host-"><code>host:</code></h2>
+<ul>
+<li>works for components too!</li>
+</ul>
+<pre><code class="lang-typescript">@Directive({
+  host: {
+    &#39;[class.animating]&#39;: &#39;clicked&#39;,
+  },
+})
+export class PowerButton {
+  clicked = false;
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="host">Host</h2>
+<ul>
+<li>host = the host element of a directive/component</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="how-do-we-listen-to-events-">How do we listen to events?</h2>
+</section>
+
+<section  class=""><h2 id="same-syntax-different-place">Same syntax, different place</h2>
+</section>
+
+<section data-state='notitle' class=" notitle"><h2 id="-"> </h2>
+<pre><code class="lang-typescript">@Directive({
+  host: {
+    // ...
+    &#39;(click)&#39;: &#39;animate()&#39;,
+    &#39;(animationend)&#39;: &#39;done()&#39;,
+  },
+})
+export class PowerButton {
+  animating = false;
+
+  animate() {
+    this.animating = true;
+  }
+
+  done() {
+    this.animating = false;
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="styling">Styling</h2>
+<ul>
+<li>doesn&#39;t have a view, so no encapsulation</li>
+<li>needs normal (external) styling, or inline</li>
+</ul>
+</section>
+
+<section data-state='title' class=" title"><h2 id="exercise">Exercise</h2>
+<pre><code>attribute-directives
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="structural-directives">Structural directives</h2>
+</section>
+
+<section  class=""><h2 id="creating-and-destroying-views">Creating and destroying views</h2>
+</section>
+
+<section  class=""><h2 id="uses-template-">Uses <code>&lt;template&gt;</code></h2>
+<ul>
+<li>HTML5 tag</li>
+</ul>
+<pre><code class="lang-html">&lt;template&gt;
+  &lt;h1&gt;You won&#39;t see me!&lt;/h1&gt;
+&lt;/template&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="syntax-sugar">Syntax sugar</h2>
+<pre><code class="lang-html">&lt;p *ngIf=&quot;condition&quot;&gt;
+  Now you see me
+&lt;/p&gt;
+
+&lt;!-- long hand for the above --&gt;
+&lt;template [ngIf]=&quot;condition&quot;&gt;
+  &lt;p&gt;
+   Now you see me
+  &lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="defining-unless-">Defining <code>Unless</code></h2>
+<ul>
+<li>opposite of <code>*ngIf</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="getting-reference-to-template">Getting reference to template</h2>
+<ul>
+<li>use <code>TemplateRef&lt;any&gt;</code></li>
+<li>this is how we reference our <code>&lt;template&gt;</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="where-do-we-put-it-">Where do we put it?</h2>
+</section>
+
+<section  class=""><h2 id="-viewcontainerref-"><code>ViewContainerRef</code></h2>
+<ul>
+<li>this is where we slot in ng2 view content</li>
+<li>vs manually modifying the DOM</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="just-somewhere-to-put-content">Just somewhere to put content</h2>
+</section>
+
+<section  class=""><h2 id="can-be-any-element">Can be any element</h2>
+<pre><code class="lang-typescript">&lt;div #someDiv&gt;
+&lt;/div&gt;
+
+&lt;!-- content ends up as a sibling, not child --&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="easiest-simply-use-our-directive-node">Easiest: simply use our directive node</h2>
+</section>
+
+<section  class=""><h2 id="-viewcontainerref-methods"><code>ViewContainerRef</code> methods</h2>
+<ul>
+<li><code>vcr.clear()</code> - clears</li>
+<li><code>vcr.createEmbeddedView(...)</code> fills view with something</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="together">Together</h2>
+<pre><code class="lang-typescript">this.vcr.createEmbeddedView(this.templateRef);
+</code></pre>
+</section>
+
+<section  class=""><h2 id="full-directive">Full directive</h2>
+</section>
+
+<section  class=""><h2 id="what-type-of-selector-">What type of selector?</h2>
+</section>
+
+<section  class=""><h2 id="-unless-"><code>[unless]</code></h2>
+</section>
+
+<section  class=""><h2 id="we-need-to-take-a-property-to-toggle">We need to take a property to toggle</h2>
+</section>
+
+<section  class=""><h2 id="selector">Selector</h2>
+<pre><code class="lang-typescript">import { Directive } from &quot;@angular/core&quot;;
+
+@Directive({
+  selector: &quot;[unless]&quot;,
+})
+export class Unless {
+  // ...
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="input">Input</h2>
+<pre><code class="lang-typescript">import { /* ..., */ Input } from &quot;@angular/core&quot;;
+
+@Directive({
+  // ...
+})
+export class Unless {
+  @Input() unless: any;
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="inject">Inject</h2>
+<pre><code class="lang-typescript">import {  /* ..., */
+  ViewContainerRef, TemplateRef } 
+  from &quot;@angular/core&quot;;
+
+@Directive({
+  // ...
+})
+export class Unless {
+  constructor(
+    private tpl: TemplateRef&lt;any&gt;,
+    private view: ViewContainerRef
+  ) {}
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="listen-for-change">Listen for change</h2>
+<pre><code class="lang-typescript">import { /* ..., */ Input } from &quot;@angular/core&quot;;
+
+@Directive({
+  // ...
+})
+export class Unless {
+  ngOnChanges() {
+    if(this.unless) {
+      this.view.clear();
+    } else {
+      this.view.createEmbeddedView(this.tpl);
+    }
+  }
+}
+</code></pre>
+</section>
+
+<section data-state='title' class=" title"><h2 id="exercise">Exercise</h2>
+<pre><code>structural-directives
+</code></pre></section>
+
+<section data-state='title' class=" title"><h2 id="component-relationships">Component relationships</h2>
+</section>
+
+<section  class=""><h2 id="we-can-do-lots-with-parent-children">We can do lots with parent/children</h2>
+</section>
+
+<section  class=""><h2 id="children-can-very-easily-get-parent">Children can very easily get parent</h2>
+<pre><code class="lang-typescript">// simply looks up tree, to find parent
+constructor(
+  private parentComponent: SomeParentComponent ) {
+
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="can-do-things-like-register-self">Can do things like register self</h2>
+<pre><code class="lang-typescript">// simply looks up tree, to find parent
+constructor(
+  private parentComponent: SomeParentComponent ) {
+
+}
+
+ngAfterViewInit() {
+  this.parentComponent.register(this);
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="we-can-also-go-the-other-way">We can also go the other way</h2>
+<pre><code>@Component({
+  template: `
+    &lt;custom-A&gt;&lt;/custom-A&gt;
+    &lt;video #myVideo&gt;&lt;/video&gt;
+    &lt;custom-B&gt;&lt;/custom-B&gt;
+    &lt;custom-B&gt;&lt;/custom-B&gt;
+  `,
+})
+class Parent {
+  @ViewChild(CustomA) a: CustomA;
+  @ViewChild(&#39;myVideo&#39;) vid: ElementRef;
+  @ViewChildren(CustomB) bs: QueryList&lt;CustomB&gt;;
+}
+</code></pre></section>
+
+<section  class=""><h2 id="component-instance-by-type">Component instance by type</h2>
+<pre><code>@Component({
+  template: `
+    &lt;custom-A&gt;&lt;/custom-A&gt;
+  `,
+})
+class Parent {
+  @ViewChild(CustomA) a: CustomA;
+}
+</code></pre></section>
+
+<section  class=""><h2 id="component-instance-by-local-var">Component instance by local var</h2>
+<pre><code>@Component({
+  template: `
+    &lt;custom-A #myA&gt;&lt;/custom-A&gt;
+  `,
+})
+class Parent {
+  @ViewChild(&#39;myA&#39;) a: CustomA;
+}
+</code></pre></section>
+
+<section  class=""><h2 id="single-native-element">Single native element</h2>
+<pre><code>@Component({
+  template: `
+    &lt;video #myVideo&gt;&lt;/video&gt;
+  `,
+})
+class Parent {
+  @ViewChild(&#39;myVideo&#39;) vid: ElementRef;
+}
+</code></pre></section>
+
+<section  class=""><h2 id="list-of-components">List of components</h2>
+<pre><code>@Component({
+  template: `
+    &lt;custom-B&gt;&lt;/custom-B&gt;
+    &lt;custom-B&gt;&lt;/custom-B&gt;
+  `,
+})
+class Parent {
+  @ViewChildren(CustomB) bs: QueryList&lt;CustomB&gt;;
+}
+</code></pre></section>
+
+<section  class=""><h2 id="not-available-straight-away-">Not available straight away!</h2>
+<pre><code>@Component({
+  /// ...
+})
+class Parent {
+  @ViewChild(CustomB) b: CustomB;
+
+  constructor() {
+    // boom!
+    this.bs.someMethod();
+  }
+}
+</code></pre></section>
+
+<section  class=""><h2 id="wait-for-view-to-be-ready">Wait for view to be ready</h2>
+<pre><code>@Component({
+  /// ...
+})
+class Parent {
+  @ViewChild(CustomB) b: CustomB;
+
+  ngAfterViewInit() {
+    // everything works :)
+    this.bs.someMethod();
+  }
+}
+</code></pre></section>
+
+<section  class=""><h2 id="why-no-css-selectors-">Why no CSS selectors?</h2>
+</section>
+
+<section  class=""><h2 id="anything-host-specific-in-template">Anything host-specific in template</h2>
+<ul>
+<li>otherwise our component&#39;s <em>logic</em> would be host specific</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="these-are-all-view-relationships">These are all view relationships</h2>
+<ul>
+<li>view = template</li>
+<li>stuff the component directly controls</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="we-can-also-wrap-external-content">We can also wrap external content</h2>
+</section>
+
+<section  class=""><h2 id="e-g-transform">e.g transform</h2>
+<pre><code class="lang-html">&lt;!-- our component --&gt;
+&lt;top-bar&gt;
+  &lt;!-- here, someone using our component
+       places their own content inside our 
+      tag--&gt;
+  &lt;main&gt;
+    &lt;img src=&#39;./super-logo.png&#39;&gt;
+  &lt;/main&gt;
+  &lt;extra&gt;
+    &lt;input type=search&gt;
+  &lt;/extra&gt;
+&lt;/top-bar&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="into-">into:</h2>
+<pre><code class="lang-html">&lt;top-bar class=&quot;top-bar&quot;&gt;
+  &lt;div class=&quot;top-bar-left&quot;&gt;
+    &lt;main&gt;
+      &lt;img src=&#39;./super-logo.png&#39;&gt;
+    &lt;/main&gt;
+  &lt;/div&gt;
+  &lt;!-- ... --&gt;
+&lt;/top-bar&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="use-ng-content-">Use <code>&lt;ng-content&gt;</code></h2>
+<ul>
+<li>ng2 version of n1 transclusion</li>
+<li>multiple slots</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="e-g-ng-content-">e.g <code>&lt;ng-content</code></h2>
+<pre><code>@Component({
+  template: `
+    &lt;div class=&quot;top-bar-left&quot;&gt;
+      &lt;ng-content select=&#39;main&#39;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;top-bar-right&quot;&gt;
+      &lt;ng-content select=&#39;extra&#39;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+  `,
+})
+</code></pre></section>
+
+<section  class=""><h2 id="can-go-further">Can go further</h2>
+</section>
+
+<section  class=""><h2 id="tabs-example-reverse-it-so-parent-queries">Tabs example - reverse it so parent queries</h2>
+<pre><code class="lang-html">&lt;tabs&gt;
+  &lt;tab&gt;&lt;/tab&gt;
+  &lt;tab&gt;&lt;/tab&gt;
+  &lt;tab&gt;&lt;/tab&gt;
+&lt;/tabs&gt;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="-contentchild-ren-"><code>ContentChild(ren)</code></h2>
+<ul>
+<li><code>Content(ren)</code> = in <em>their</em> template</li>
+<li><code>ViewChild(ren)</code> = in <em>our</em> template</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="like-viewchild-lvar-or-type">Like <code>ViewChild</code>, lvar or type</h2>
+<ul>
+<li>no CSS</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="e-g">e.g</h2>
+<pre><code class="lang-typescript">@Component({
+  /// ...
+})
+class Tabs {
+  @ViewChildren(Tab) tabs: QueryList&lt;Tab&gt;;
+  active: Tab;
+
+  ngAfterViewInit() {
+    if(this.tabs.length &gt; 0) {
+      this.active = this.tabs[0];
+    }
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="we-can-also-ask-for-other-components">We can also ask for other components</h2>
+</section>
+
+<section  class=""><h2 id="via-read-t-">via <code>{read : T }</code></h2>
+<ul>
+<li>matches &#39;Tab&#39; predicate</li>
+<li>asks for <code>TemplateRef</code> instead</li>
+</ul>
+<pre><code class="lang-typescript">@ContentChildren(Tab, { read: TemplateRef }) 
+  tabTemplates: QueryList&lt;TemplateRef&lt;any&gt;&gt;;
+</code></pre>
+</section>
+
+<section data-state='title' class=" title"><h2 id="exercises">Exercises</h2>
+<p>  component-parent-children</p>
+</section>
+
+<section data-state='title' class=" title"><h2 id="rxjs">RxJS</h2>
+</section>
+
+<section  class=""><h2 id="reactive-programming">Reactive Programming</h2>
+<p>Organising our code around reacting to changes</p>
+</section>
+
+<section  class=""><h2 id="vs-proactive">vs proactive</h2>
+<ul>
+<li>the default style</li>
+<li>We <em>make</em> changes to others in response</li>
+<li>dependencies fulfilled in producer (writer)</li>
+</ul>
+<p><img src="img/proactive.png" alt="img"></p>
+</section>
+
+<section  class=""><h2 id="proactive-code">Proactive code</h2>
+<pre><code class="lang-typescript">class ParentWidget {
+  main() {
+    dataSource.get(function(response) {
+      this.childWidget.data = response;
+    });
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="reactive">Reactive</h2>
+<ul>
+<li>We encode the logic of data-flow into streams</li>
+<li>Clear where our dependencies lie in consumer (reader)</li>
+</ul>
+<p><img src="img/reactive.png" alt="img"></p>
+</section>
+
+<section  class=""><h2 id="reactive-code">Reactive code</h2>
+<pre><code class="lang-typescript">class ChildWdiget {
+  main() {
+    this.data = this.parent.dataSource.subscribe();
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="rxjs">RxJS</h2>
+<ul>
+<li>&#39;programming with observable streams&#39;</li>
+<li>so our reactions are subscribing to streams</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="big-idea">Big idea</h2>
+<ul>
+<li>Everything is a stream!</li>
+<li>We do lots of turning stream A into stream B</li>
+<li>and a little of subscribing to a stream and doing stuff (side-effects)</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="lots-of-integration-points-into-angular">Lots of integration points into Angular</h2>
+</section>
+
+<section  class=""><h2 id="forms-changing">Forms changing</h2>
+<pre><code class="lang-typecript">this.form.valueChanges
+</code></pre>
+</section>
+
+<section  class=""><h2 id="http">HTTP</h2>
+<ul>
+<li>requests are Observables</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="importing">Importing</h2>
+</section>
+
+<section  class=""><h2 id="rxjs-is-huge-">RxJS is huge!</h2>
+<ul>
+<li>so each bit imported on its own</li>
+</ul>
+<pre><code class="lang-typescript">import &quot;rxjs/add/operator/map&quot;;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="today-we-don-t-care">Today we don&#39;t care</h2>
+<pre><code class="lang-typescript">// all the fun things! :)
+import &quot;rxjs/Rx&quot;;
+</code></pre>
+</section>
+
+<section  class=""><h2 id="so-">So!</h2>
+</section>
+
+<section  class=""><h2 id="-observable-"><code>Observable</code></h2>
+<ul>
+<li>this is the main abstraction</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="observables-can-be-subscribed-to">Observables can be subscribed to</h2>
+</section>
+
+<section  class=""><h2 id="subscribing">Subscribing</h2>
+<pre><code class="lang-typescript">export class SomeComponent {
+  @ViewQuery(Child) child: Child;
+
+  ngAfterViewInit() {
+    this.child.output
+      .subscribe(e =&gt; {
+        // we will see events come out
+        console.log(e);
+      })
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="but-ideally-we-transform-them-">But, ideally we transform them!</h2>
+</section>
+
+<section  class=""><h2 id="transform">Transform</h2>
+<pre><code class="lang-typescript">export class SomeComponent {
+  @ViewQuery(Child) child: Child;
+
+  ngAfterViewInit() {
+    this.child.output
+      .map(e =&gt;
+        new DifferentEvent(e, this.extraData()))
+  }
+
+  private extraData() {
+    // some additional data from this component
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="we-create-streams-from-streams">We create streams from streams</h2>
+</section>
+
+<section  class=""><h2 id="via-operators">Via operators</h2>
+<p><img src="img/rx-map.png" alt="map"></p>
+</section>
+
+<section  class=""><h2 id="rxjs-has-many">RxJS has many</h2>
+</section>
+
+<section  class=""><h2 id="let-s-open-rxmarbles">Let&#39;s open RxMarbles</h2>
+</section>
+
+<section  class=""><h2 id="operators-for-combining">Operators for combining</h2>
+<ul>
+<li><code>combineLatest</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="operators-for-transforming">Operators for transforming</h2>
+<ul>
+<li><code>map</code>, <code>scan</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="operators-for-dropping">Operators for dropping</h2>
+<ul>
+<li><code>debouce</code>, <code>distinctUntilChanged</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<p>  rxjs</p>
+</section>
+
+<section data-state='title' class=" title"><h2 id="using-libraries">Using libraries</h2>
+</section>
+
+<section  class=""><h2 id="ng2-isn-t-own-world">NG2 isn&#39;t own world</h2>
+</section>
+
+<section  class=""><h2 id="can-use-other-libs-">Can use other libs!</h2>
+</section>
+
+<section  class=""><h2 id="e-g-d3">e.g D3</h2>
+</section>
+
+<section data-state='title' class=" title"><h2 id="using-with-d3">Using with D3</h2>
+</section>
+
+<section  class=""><h2 id="goal">Goal</h2>
+<ul>
+<li>write D3 again!</li>
+<li>get data from NG to d3</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="write-a-graph">Write a graph</h2>
+<ul>
+<li>this bit: identical, but with DI</li>
+</ul>
+<pre><code class="lang-typescript">import { Injectable } from &quot;@angular/core&quot;;
+import d3 from &quot;d3&quot;;
+
+@Injectable()
+class Graph {
+  render({ el: SVGElement, data: any[] }) {
+    d3.select(el)
+      // ...
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="angular-hides-the-dom">Angular hides the DOM</h2>
+</section>
+
+<section  class=""><h2 id="d3-needs-the-dom">D3 needs the DOM</h2>
+<pre><code class="lang-typescript">render({ el: SVGElement, data: any[] }) {
+</code></pre>
+</section>
+
+<section  class=""><h2 id="how-">How?</h2>
+</section>
+
+<section  class=""><h2 id="-elementref-"><code>ElementRef</code></h2>
+<pre><code class="lang-typescript">import {ElementRef, Component} from &#39;@angular/core&#39;;
+import { Graph } from &quot;./Graph.service&quot;;
+
+@Component({
+  // ...
+})
+export class Chart {
+  constructor(private el: ElementRef, 
+    private graph: Graph) {
+  }
+  ngOnChanges() {
+    this.graph.render({
+      // aha! the DOM returns...
+      el: this.el &amp;&amp; this.el.nativeElement,
+      data: /// ...
+    })
+  }
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="exercise">Exercise</h2>
+<pre><code>d3
 </code></pre></section>
 
 <section  class=""><h2 id="thanks-">Thanks!</h2>

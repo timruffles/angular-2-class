@@ -21,41 +21,34 @@ import { CaptionedProduct } from "./CaptionedProduct.component";
       <caption>Hello!</caption>
     </captioned-product>
 
-    <button (click)="activeName = 'a'">
-      Enable A
-    </button>
 
-    <button (click)="activeName = 'b'">
-      Enable B
-    </button>
+    <ul class='tabs'>
+      <li class='tabs-title' (click)="activeName = 'a'">
+        <a>Tab A</a>
+      </li>
 
-    <button (click)="activeName = 'c'">
-      Enable C
-    </button>
+      <li class='tabs-title' (click)="activeName = 'b'">
+        <a>Tab B</a>
+      </li>
 
-    <tabs [activeName]="activeName">
-      <div *tab="'a'">one</div>
-      <div *tab="'b'">two</div>
-      <div *tab="'c'">three</div>
+      <li class='tabs-title' (click)="activeName = 'c'">
+        <a>Tab C</a>
+      </li>
+    </ul>
+
+    <tabs [activeName]="activeName" class='tabs-content'>
+      <div *tab="'a'"><h2>Hi, I'm tab A</h2></div>
+      <div *tab="'b'">
+        <h2>Tab B is more fun</h2>
+        <img src='img/goat.jpg' style='max-height: 200px'>
+      </div>
+      <div *tab="'c'">
+        <h2>Back to boring</h2>
+        <p>Sorry</p>
+      </div>
     </tabs>
 
 
-    <button powerButton class=button>
-      Slam!!
-    </button>
-
-    <p *unless='cleared'>
-      Not cleared yet!
-    </p>
-
-    <button powerButton class=button (click)='cleared = !cleared'>
-      Slam!!
-    </button>
-
-    <div *ngFor='let demo of demos'>
-      <h3>{{ demo.name }}</h3>
-      <product [product]='demo.product'></product>
-    </div>
   `,
 })
 class ProductDemo {

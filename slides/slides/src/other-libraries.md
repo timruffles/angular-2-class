@@ -64,7 +64,6 @@ export class Chart {
   }
 }
 ```
-<!-- TODO write a demo with ElementRef -->
 
 ## Exercise
 {exercise: 1}

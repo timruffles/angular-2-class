@@ -13,15 +13,35 @@ We want to accept payment using Angular's form system.
 1. First let's create a route that loads the `Checkout` component
   1. You know how to do this :)
 
+### Choosing correct forms module
+
+1. In `main.ts`, we need to ensure we've deprecated the old forms, and enabled the new
+  1. this is temporary - in future versions will be auto
+  1. forms are part of `PLATFORM_DIRECTIVES`, so you won't need to import
+
+```typescript
+import {disableDeprecatedForms, provideForms} from '@angular/forms';
+
+bootstrap(App, [
+  // ...
+  disableDeprecatedForms(),
+  provideForms(),
+  // ...
+]);
+```
+
 ### Connecting a form to Angular
 
 1. In the `Checkout` component, we want to create our form
   1. I've written the HTML for you as HTML is not what we're here to learn
-  1. It's your job to wire it up with Angular
+  1. It's your job to wire it up with Angular, with one-way binding
+    1. You'll want to use `ngModel` - check out its docs if you can't remember
+    1. We don't want 2 way binding
 1. We want to ensure the data we create is valid
-  1. Ensure all the fields are required - apart from the captcha
+  1. Ensure all the fields are `required` - apart from the captcha
   1. Disable the checkout button until the form is valid
-1. Initial values need you to pass a value to `[ngModel]`
+1. To get an initial `true` value to the Captcha, we need to provide a value ot `ngModel`
+  1. pass a value to `[ngModel]=`
 
 ### Displaying errors
 

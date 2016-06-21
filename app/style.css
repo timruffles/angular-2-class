@@ -2,6 +2,14 @@ body {
   padding: 2em;
 }
 
+tabs {
+  display: block;
+}
+
+.tabs-content {
+  padding: 1rem;
+}
+
 flash-sale-item {
   display: inline-block;
   text-align: center;

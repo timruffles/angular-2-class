@@ -21,19 +21,43 @@
 </ol>
 </li>
 </ol>
+<h3 id="choosing-correct-forms-module">Choosing correct forms module</h3>
+<ol>
+<li>In <code>main.ts</code>, we need to ensure we&#39;ve deprecated the old forms, and enabled the new<ol>
+<li>this is temporary - in future versions will be auto</li>
+<li>forms are part of <code>PLATFORM_DIRECTIVES</code>, so you won&#39;t need to import</li>
+</ol>
+</li>
+</ol>
+<pre><code class="lang-typescript">import {disableDeprecatedForms, provideForms} from &#39;@angular/forms&#39;;
+
+bootstrap(App, [
+  // ...
+  disableDeprecatedForms(),
+  provideForms(),
+  // ...
+]);
+</code></pre>
 <h3 id="connecting-a-form-to-angular">Connecting a form to Angular</h3>
 <ol>
 <li>In the <code>Checkout</code> component, we want to create our form<ol>
 <li>I&#39;ve written the HTML for you as HTML is not what we&#39;re here to learn</li>
-<li>It&#39;s your job to wire it up with Angular</li>
+<li>It&#39;s your job to wire it up with Angular, with one-way binding<ol>
+<li>You&#39;ll want to use <code>ngModel</code> - check out its docs if you can&#39;t remember</li>
+<li>We don&#39;t want 2 way binding</li>
+</ol>
+</li>
 </ol>
 </li>
 <li>We want to ensure the data we create is valid<ol>
-<li>Ensure all the fields are required - apart from the captcha</li>
+<li>Ensure all the fields are <code>required</code> - apart from the captcha</li>
 <li>Disable the checkout button until the form is valid</li>
 </ol>
 </li>
-<li>Initial values need you to pass a value to <code>[ngModel]</code></li>
+<li>To get an initial <code>true</code> value to the Captcha, we need to provide a value ot <code>ngModel</code><ol>
+<li>pass a value to <code>[ngModel]=</code></li>
+</ol>
+</li>
 </ol>
 <h3 id="displaying-errors">Displaying errors</h3>
 <p>We also need to show our users what went wrong.</p>
