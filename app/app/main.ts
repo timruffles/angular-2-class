@@ -1,3 +1,4 @@
+import "rxjs/Rx";
 
 import { bootstrap } 
   from "@angular/platform-browser-dynamic";
@@ -12,6 +13,7 @@ import { HTTP_PROVIDERS } from "@angular/http";
 
 import { PowerButton } from "./PowerButton.directive";
 import { PLATFORM_DIRECTIVES  } from "@angular/core";
+
 
 import { Unless } from "./Unless.directive";
 

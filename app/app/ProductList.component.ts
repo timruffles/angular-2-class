@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, forwardRef, Inject} from "@angular/core";
 
 import { ProductPage } from "./ProductPage.component";
 import { staticProductList } from "./fixtures";
@@ -7,6 +7,10 @@ import { ProductStore } from "./ProductStore";
 
 import { Routes, Router, ROUTER_DIRECTIVES } 
   from "@angular/router";
+
+
+import { App } from "./App.component";
+import { Tabs } from "./Tabs.component";
 
 @Component({
   selector: "product-list",
@@ -26,7 +30,8 @@ export class ProductList {
   products: product[] = [];
 
   constructor(
-    private store: ProductStore
+    private store: ProductStore,
+    @Inject(forwardRef(() => App)) private app: App
   ) {
   }
 
@@ -42,5 +47,7 @@ export class ProductList {
       })
   }
 }
+
+
 
 

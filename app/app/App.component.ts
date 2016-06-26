@@ -19,6 +19,8 @@ import { Tab } from "./Tab.directive";
 import { Checkout } from "./Checkout.component";
 import { Payment } from "./Payment";
 
+import { SearchPage } from "./SearchPage.component";
+
 @Routes([
   { path: "/",
     component: ProductList },
@@ -26,6 +28,8 @@ import { Payment } from "./Payment";
     component: ProductPage },
   { path: "/checkout",
     component: Checkout },
+  { path: "/search-page",
+    component: SearchPage },
 ])
 @Component({
   directives: [
@@ -42,7 +46,7 @@ import { Payment } from "./Payment";
     ROUTER_PROVIDERS,
     ProductStore
   ],
-  template: `
+  template: `<div *tab='f'></div> <tabs></tabs> <router-outlet></router-outlet>` || `
     <ul class='tabs'>
       <li class='tabs-title' (click)="activeName = 'a'">
         <a>Tab A</a>
@@ -82,7 +86,7 @@ export class App {
 
   emergency= false;
 
-  constructor() {
+  constructor(router: Router) {
   }
 }
 
